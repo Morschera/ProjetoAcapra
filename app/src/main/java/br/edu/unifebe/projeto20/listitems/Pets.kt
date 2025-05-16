@@ -14,7 +14,7 @@ class PetsListProvider {
     fun getPets(): Flow<MutableList<Pets>> {
         val list: MutableList<Pets> = mutableListOf(
             Pets(
-                imgPets = R.drawable.Barto,
+                imgPets = R.drawable.barto,
                 nome = "Bartô",
                 descricao = "Bartô foi resgatado junto com seus 4 irmãos e sua mamãe Angel. Estavam\n" +
                         "em situação de rua, e viviam em uma casa improvisada de plástico. Bartô foi o único que\n" +
@@ -24,7 +24,7 @@ class PetsListProvider {
             ),
 
             Pets(
-                imgPets = R.drawable.Branca,
+                imgPets = R.drawable.branca,
                 nome = "Branca",
                 descricao = "Branca foi retirada de maus tratos, era usada de forma indevida para caça. É\n" +
                         "muito dócil, querida e brincalhona, mas apresenta um certo grau de medo.\n" +
@@ -32,7 +32,7 @@ class PetsListProvider {
             ),
 
             Pets(
-                imgPets = R.drawable.Cleo,
+                imgPets = R.drawable.cleo,
                 nome = "Cléo",
                 descricao = "Cléo (filha) e Glória (mãe), foram encontradas abandonadas na BR.\n" +
                         "São muito dóceis, amáveis e ativas, apesar da idade mais adulta, não apresentam\n" +
@@ -41,7 +41,7 @@ class PetsListProvider {
             ),
 
             Pets(
-                imgPets = R.drawable.Difusor,
+                imgPets = R.drawable.difusor,
                 nome = "Difusor",
                 descricao = "Difusor é um gatinho macho, que foi encontrado em uma fábrica de peças\n" +
                         "automotivas (por isso o nome), chegou em estado caquético, com extrema magreza. Aos\n" +
@@ -51,7 +51,7 @@ class PetsListProvider {
             ),
 
             Pets(
-                imgPets = R.drawable.Luma,
+                imgPets = R.drawable.luma,
                 nome = "Luma",
                 descricao = "Luma vivia nas ruas com seu irmão Juca. Ele foi adotado, mas ela ainda\n" +
                         "segue esperando seu tão sonhado lar.\n" +
@@ -59,7 +59,7 @@ class PetsListProvider {
             ),
 
             Pets(
-                imgPets = R.drawable.Luzia,
+                imgPets = R.drawable.luzia,
                 nome = "Luzia",
                 descricao = "Luzia chegou até nós através de um pedido de ajuda, onde a pessoa que\n" +
                         "pediu ajuda relatava que tinha um “monstro” em sua casa. Quando fomos resgatar,\n" +
@@ -70,7 +70,7 @@ class PetsListProvider {
             ),
 
             Pets(
-                imgPets = R.drawable.Maia,
+                imgPets = R.drawable.maia,
                 nome = "Maia",
                 descricao = "Maia foi encontrada junto com sua irmã, Mavie, abandonada em Brusque.\n" +
                         "Foram resgatadas e agora Maia precisa de um lar com muito espaço, amor e carinho. É\n" +
@@ -78,7 +78,7 @@ class PetsListProvider {
             ),
 
             Pets(
-                imgPets = R.drawable.Mavie,
+                imgPets = R.drawable.mavie,
                 nome = "Mavie",
                 descricao = "Mavie foi encontrada junto com sua irmã, Maia, abandonada em Brusque.\n" +
                         "Foram resgatadas e agora Mavie precisa de um lar com muito espaço, amor e carinho. É\n" +
@@ -86,7 +86,7 @@ class PetsListProvider {
             ),
 
             Pets(
-                imgPets = R.drawable.Mimi,
+                imgPets = R.drawable.mimi,
                 nome = "Mimi",
                 descricao = "Mimi foi abandonada em uma residência, viveu um tempo na rua até ser\n" +
                         "resgatada. É uma gatinha muito amorosa e carente!.\n" +
