@@ -38,4 +38,12 @@
     <string name="n_o">Não</string>
     <string name="sim">Sim</string>
     <string name="formul_rio_de_ado_o">Formulário de adoção</string>
+    <string name="voltar">Voltar</string>
+    <string name="logo_acapra">Logo ACAPRA</string>
+    <string name="adicionar_pet">Adicionar Pet</string>
+    <string name="registrar_admin">Registrar Admin</string>
+    <string name="formul_rios">Formulários</string>
+    <string name="jo_o_carvalho">João Carvalho</string>
+    <string name="carlos_alberto">Carlos Alberto</string>
+    <string name="ketlin_fernandes">Ketlin Fernandes</string>
 </resources>
