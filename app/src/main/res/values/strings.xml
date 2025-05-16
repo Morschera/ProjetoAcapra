@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Projeto2.0</string>
+    <string name="e_mail">E-mail:</string>
+    <string name="senha">Senha:</string>
+    <string name="logar">Logar</string>
+    <string name="logo">Logo</string>
+    <string name="login_de_administrador">Login de administrador</string>
+    <string name="digite_seu_e_mail">Digite seu e-mail</string>
+    <string name="digite_sua_senha">Digite sua senha</string>
 </resources>
