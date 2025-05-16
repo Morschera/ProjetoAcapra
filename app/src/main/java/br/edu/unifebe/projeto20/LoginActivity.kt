@@ -1,5 +1,6 @@
 package br.edu.unifebe.projeto20
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -16,13 +17,14 @@ import androidx.appcompat.app.AppCompatActivity
         private val USUARIO_CORRETO = "admin"
         private val SENHA_CORRETA = "1234"
 
+        @SuppressLint("MissingInflatedId")
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.login_view)
 
-            edtUsuario = findViewById(R.id.txtEmail)
-            edtSenha = findViewById(R.id.txtSenha)
-            btnLogin = findViewById(R.id.btnLogar)
+            edtUsuario = findViewById(R.id.txtNomeReg)
+            edtSenha = findViewById(R.id.txtEmailReg)
+            btnLogin = findViewById(R.id.btnLogin)
 
             btnLogin.setOnClickListener {
                 val usuario = edtUsuario.text.toString()

@@ -46,4 +46,7 @@
     <string name="jo_o_carvalho">João Carvalho</string>
     <string name="carlos_alberto">Carlos Alberto</string>
     <string name="ketlin_fernandes">Ketlin Fernandes</string>
+    <string name="registrar">Registrar</string>
+    <string name="digite_seu_nome">Digite seu nome</string>
+    <string name="digite_seu_telefone">Digite seu telefone</string>
 </resources>
