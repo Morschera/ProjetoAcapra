@@ -2,7 +2,7 @@ package br.edu.unifebe.projeto20.Model
 
 import android.graphics.Bitmap
 
-data class Adocao (
+data class FormularioAdocao (
     val nomecompleto: String,  //Nome completo da pessoa
     val telefone: String,   //Telefone da pessoa
     val animalinteresse: String,    //Animal que a pessoa esta interessada em levar
