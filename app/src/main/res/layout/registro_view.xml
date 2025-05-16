@@ -100,7 +100,7 @@
                     android:layout_height="48dp"
                     android:layout_marginBottom="24dp"
                     android:background="@drawable/edittext_background"
-                    android:hint="@string/digite_sua_senha"
+                    android:hint="Digete seu Telefone"
                     android:inputType="textPassword"
                     android:paddingHorizontal="12dp"
                     tools:ignore="Autofill,VisualLintTextFieldSize" />
