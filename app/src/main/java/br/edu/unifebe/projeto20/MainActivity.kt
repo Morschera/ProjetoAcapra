@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
                     binding.btBolsonaro.setBackgroundResource(R.drawable.bg_button_disabled)
                     binding.btBolsonaro.setTextColor(R.color.dark_gray)
                     binding.recyclerViewProducts.visibility = View.INVISIBLE
-                    binding.txtListTitle.text = "Cachorro"
+                    binding.txtListTitle.text = "CachoArro"
                 }
 
                 binding.btGato.setOnClickListener {
