@@ -22,8 +22,8 @@ import androidx.appcompat.app.AppCompatActivity
             super.onCreate(savedInstanceState)
             setContentView(R.layout.login_view)
 
-            edtUsuario = findViewById(R.id.txtNomeReg)
-            edtSenha = findViewById(R.id.txtEmailReg)
+            edtUsuario = findViewById(R.id.txtEmail)
+            edtSenha = findViewById(R.id.txtSenha)
             btnLogin = findViewById(R.id.btnLogin)
 
             btnLogin.setOnClickListener {
