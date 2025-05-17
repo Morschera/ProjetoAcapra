@@ -42,7 +42,6 @@ class MainActivity : AppCompatActivity() {
                     petsList.add(p)
                     Log.d("DEBUG", "Pets carregados: ${value.size}")
                 }
-                // Voltar para a thread principal e atualizar a UI
                 launch(Dispatchers.Main) {
                     petsAdapter.notifyDataSetChanged()
                 }
