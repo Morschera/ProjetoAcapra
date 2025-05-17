@@ -4,15 +4,28 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
+import br.edu.unifebe.projeto20.Model.Pet
+import br.edu.unifebe.projeto20.adapter.PetsAdapter
 import br.edu.unifebe.projeto20.databinding.ActivityMainBinding
+import br.edu.unifebe.projeto20.listitems.Pets
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collectIndexed
+import kotlinx.coroutines.launch
+import androidx.core.graphics.toColorInt
 
+@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var petsAdapter: PetsAdapter
+    private val pets = Pets()
+    private val petsList: MutableList<Pet> = mutableListOf()
     var clicked = false
 
     @SuppressLint("ResourceAsColor")
@@ -20,6 +33,27 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        window.statusBarColor = "#E0E0E0".toColorInt()
+
+        CoroutineScope(Dispatchers.IO).launch {
+            pets.getPets().collectIndexed { index, value ->
+                for (p in value) {
+                    petsList.add(p)
+                    Log.d("DEBUG", "Pets carregados: ${value.size}")
+                }
+                // Voltar para a thread principal e atualizar a UI
+                launch(Dispatchers.Main) {
+                    petsAdapter.notifyDataSetChanged()
+                }
+            }
+        }
+
+        val recyclerViewPets = binding.recyclerViewProducts
+        recyclerViewPets.layoutManager = GridLayoutManager(this, 2)
+        recyclerViewPets.setHasFixedSize(true)
+        petsAdapter = PetsAdapter(this,petsList)
+        recyclerViewPets.adapter = petsAdapter
 
         binding.btTodos.setOnClickListener {
             clicked = true
@@ -34,10 +68,10 @@ class MainActivity : AppCompatActivity() {
                 binding.btLula.setTextColor(R.color.dark_gray)
                 binding.btBolsonaro.setBackgroundResource(R.drawable.bg_button_disabled)
                 binding.btBolsonaro.setTextColor(R.color.dark_gray)
-                binding.recyclerViewProducts.visibility = View.INVISIBLE
+                binding.recyclerViewProducts.visibility = View.VISIBLE
                 binding.txtListTitle.text = "Todos"
             }
-
+        }
             binding.btCachorro.setOnClickListener {
                 clicked = true
                 if (clicked) {
@@ -51,10 +85,10 @@ class MainActivity : AppCompatActivity() {
                     binding.btLula.setTextColor(R.color.dark_gray)
                     binding.btBolsonaro.setBackgroundResource(R.drawable.bg_button_disabled)
                     binding.btBolsonaro.setTextColor(R.color.dark_gray)
-                    binding.recyclerViewProducts.visibility = View.INVISIBLE
-                    binding.txtListTitle.text = "CachoArro"
+                    binding.recyclerViewProducts.visibility = View.VISIBLE
+                    binding.txtListTitle.text = "Cachorro"
                 }
-
+            }
                 binding.btGato.setOnClickListener {
                     clicked = true
                     if (clicked) {
@@ -68,10 +102,10 @@ class MainActivity : AppCompatActivity() {
                         binding.btLula.setTextColor(R.color.dark_gray)
                         binding.btBolsonaro.setBackgroundResource(R.drawable.bg_button_disabled)
                         binding.btBolsonaro.setTextColor(R.color.dark_gray)
-                        binding.recyclerViewProducts.visibility = View.INVISIBLE
+                        binding.recyclerViewProducts.visibility = View.VISIBLE
                         binding.txtListTitle.text = "Gato"
                     }
-
+                }
                     binding.btLula.setOnClickListener {
                         clicked = true
                         if (clicked) {
@@ -85,10 +119,10 @@ class MainActivity : AppCompatActivity() {
                             binding.btGato.setTextColor(R.color.dark_gray)
                             binding.btBolsonaro.setBackgroundResource(R.drawable.bg_button_disabled)
                             binding.btBolsonaro.setTextColor(R.color.dark_gray)
-                            binding.recyclerViewProducts.visibility = View.INVISIBLE
+                            binding.recyclerViewProducts.visibility = View.VISIBLE
                             binding.txtListTitle.text = "Lula"
                         }
-
+                    }
                         binding.btBolsonaro.setOnClickListener {
                             clicked = true
                             if (clicked) {
@@ -102,14 +136,10 @@ class MainActivity : AppCompatActivity() {
                                 binding.btGato.setTextColor(R.color.dark_gray)
                                 binding.btLula.setBackgroundResource(R.drawable.bg_button_disabled)
                                 binding.btLula.setTextColor(R.color.dark_gray)
-                                binding.recyclerViewProducts.visibility = View.INVISIBLE
+                                binding.recyclerViewProducts.visibility = View.VISIBLE
                                 binding.txtListTitle.text = "Bolsonaro"
                             }
                         }
-                    }
-                }
-            }
-        }
 
         val btnIrLogin = findViewById<Button>(R.id.btnIrLogin)
         val btnAdocao = findViewById<Button>(R.id.btnAdocao)

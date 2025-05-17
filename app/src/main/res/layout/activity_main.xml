@@ -39,7 +39,7 @@
             android:layout_marginEnd="2dp"
             android:background="@android:drawable/btn_default"
             android:backgroundTint="#FFFFFF"
-            android:text="Adotar"
+            android:text="@string/adotar"
             android:textAllCaps="false"
             android:textColor="#2E2654"
             tools:ignore="TextContrastCheck" />
@@ -51,7 +51,7 @@
             android:layout_marginEnd="8dp"
             android:background="@android:drawable/btn_default"
             android:backgroundTint="#FFFFFF"
-            android:text="Logar ADM"
+            android:text="@string/logar_adm"
             android:textAllCaps="false"
             android:textColor="#2E2654"
             tools:ignore="TextSizeCheck,DuplicateSpeakableTextCheck,TextContrastCheck,VisualLintBounds" />
@@ -72,66 +72,71 @@
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fillViewport="true">
+            android:fillViewport="true"
+            tools:ignore="UselessParent">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:ignore="VisualLintBounds">
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btTodos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Todos"
-                    android:textColor="@color/dark_gray"
-                    android:textSize="20sp"
-                    android:background="@drawable/bg_button_disabled"
-                    android:layout_marginTop="20dp"
                     android:layout_marginHorizontal="10dp"
-                    android:layout_marginBottom="20dp"/>
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/bg_button_disabled"
+                    android:text="@string/todos"
+                    android:textColor="#78909C"
+                    android:textSize="20sp" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btCachorro"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cachorro"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/bg_button_disabled"
+                    android:text="@string/cachorro"
                     android:textColor="@color/dark_gray"
                     android:textSize="20sp"
-                    android:background="@drawable/bg_button_disabled"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginBottom="20dp"/>
+                    tools:ignore="TextContrastCheck" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btGato"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Gato"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/bg_button_disabled"
+                    android:text="@string/gato"
                     android:textColor="@color/dark_gray"
                     android:textSize="20sp"
-                    android:background="@drawable/bg_button_disabled"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginBottom="20dp"/>
+                    tools:ignore="TextContrastCheck" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btLula"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Lula"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/bg_button_disabled"
+                    android:text="@string/lula"
                     android:textColor="@color/dark_gray"
                     android:textSize="20sp"
-                    android:background="@drawable/bg_button_disabled"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginBottom="20dp"/>
+                    tools:ignore="TextContrastCheck" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btBolsonaro"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bolsonaro"
+                    android:text="@string/bolsonaro"
                     android:textColor="@color/dark_gray"
                     android:textSize="20sp"
                     android:background="@drawable/bg_button_disabled"
@@ -149,7 +154,8 @@
         android:text="Todos"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:layout_margin="20dp"/>
+        android:layout_margin="20dp"
+        tools:ignore="HardcodedText" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewProducts"

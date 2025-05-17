@@ -49,4 +49,13 @@
     <string name="registrar">Registrar</string>
     <string name="digite_seu_nome">Digite seu nome</string>
     <string name="digite_seu_telefone">Digite seu telefone</string>
+    <string name="bolsonaro">Bolsonaro</string>
+    <string name="cachorro">Cachorro</string>
+    <string name="gato">Gato</string>
+    <string name="lula">Lula</string>
+    <string name="todos">Todos</string>
+    <string name="adotar">Adotar</string>
+    <string name="logar_adm">Logar ADM</string>
+    <string name="branca_foi_retirada_de_maus_tratos_era_usada">Branca foi retirada de maus tratos, era usada...</string>
+    <string name="branca">Branca</string>
 </resources>

@@ -4,11 +4,10 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import br.edu.unifebe.projeto20.Model.Pets
+import br.edu.unifebe.projeto20.Model.Pet
 import br.edu.unifebe.projeto20.databinding.PetsItemBinding
-import java.util.jar.Attributes.Name
 
-class PetsAdapter (private val context: Context, private val petsList: MutableList<Pets>):
+class PetsAdapter (private val context: Context, private val petsList: MutableList<Pet>):
     RecyclerView.Adapter<PetsAdapter.PetsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PetsViewHolder {
