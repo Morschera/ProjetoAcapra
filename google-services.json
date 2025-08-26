@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1079378900703",
+    "project_id": "projetoacapra2025",
+    "storage_bucket": "projetoacapra2025.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1079378900703:android:2072c41d052734ee36db6a",
+        "android_client_info": {
+          "package_name": "br.edu.unifebe.projeto20"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBe_Qc_wFr4QVgu-AEkw8W2Aoc2qFg3KAw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

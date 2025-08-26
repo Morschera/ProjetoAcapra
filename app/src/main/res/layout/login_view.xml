@@ -28,7 +28,7 @@ app:cardElevation="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="366dp"
+            android:layout_height="438dp"
             android:orientation="vertical"
             android:padding="24dp">
 
@@ -82,7 +82,7 @@ app:cardElevation="8dp">
             <Button
                 android:id="@+id/btnLogin"
                 android:layout_width="192dp"
-                android:layout_height="wrap_content"
+                android:layout_height="81dp"
                 android:layout_gravity="center"
                 android:backgroundTint="#FFFFFF"
                 android:text="@string/logar"
