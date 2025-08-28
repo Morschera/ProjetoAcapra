@@ -20,9 +20,6 @@ class LoginActivity : AppCompatActivity() {
         private lateinit var btnLogin: Button
         private lateinit var auth: FirebaseAuth
 
-        private val USUARIO_CORRETO = "admin"
-        private val SENHA_CORRETA = "1234"
-
         @SuppressLint("MissingInflatedId")
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
@@ -46,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             val user = auth.currentUser
-                            val intent = Intent(this, AdmFormularioActivity::class.java)
+                            val intent = Intent(this, ListaFormulariosActivity::class.java)
                             intent.putExtra("USER_EMAIL", user?.email)
                             Toast.makeText(this, "Bem-vindo, ${user?.email}", Toast.LENGTH_SHORT).show()
                             startActivity(intent)

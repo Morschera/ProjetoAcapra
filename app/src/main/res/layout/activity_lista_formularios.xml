@@ -18,10 +18,9 @@
             android:layout_height="36dp"
             android:background="@android:color/transparent"
             android:src="@android:drawable/ic_menu_revert"
-            android:tint="@android:color/white"
             android:contentDescription="Voltar"
             android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true" />
 
         <TextView
             android:id="@+id/tvTitulo"
@@ -31,7 +30,7 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@android:color/white"
-            android:layout_centerInParent="true"/>
+            android:layout_centerInParent="true" />
 
     </RelativeLayout>
 
@@ -42,13 +41,11 @@
         app:cardCornerRadius="12dp"
         app:cardElevation="6dp">
 
-        <ListView
-            android:id="@+id/listView"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:divider="@android:color/darker_gray"
-            android:dividerHeight="1dp"
-            android:padding="8dp"/>
+            android:padding="8dp" />
 
     </androidx.cardview.widget.CardView>
 
