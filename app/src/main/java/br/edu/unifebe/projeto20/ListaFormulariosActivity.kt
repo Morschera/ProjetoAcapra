@@ -1,5 +1,6 @@
 package br.edu.unifebe.projeto20
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -9,15 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import br.edu.unifebe.projeto20.adapter.FormAdapter
 import com.google.firebase.firestore.FirebaseFirestore
 
-private val firestore: Any
-private val firestore: Any
-
 class ListaFormulariosActivity : AppCompatActivity() {
 
+    private val db = FirebaseFirestore.getInstance()
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: FormAdapter
     private val formularios = mutableListOf<String>() // Lista que vai ser preenchida pelo Firestore
-    private val db = FirebaseFirestore.getInstance()
 
     companion object {
         private const val TAG = "ListaFormulariosActivity"
@@ -39,6 +37,7 @@ class ListaFormulariosActivity : AppCompatActivity() {
         carregarFormularios()
     }
 
+    @SuppressLint("LongLogTag")
     private fun carregarFormularios() {
         db.collection("formularios") // Certifique-se que o nome da coleção está igual ao do Firestore
             .get()
