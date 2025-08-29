@@ -41,6 +41,10 @@
             android:name=".view.FormularioAdocaoActivity"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".DetalhesPetActivity"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>
