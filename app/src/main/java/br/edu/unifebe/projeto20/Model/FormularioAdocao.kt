@@ -19,5 +19,5 @@ data class FormularioAdocao (
     val condicoesFisicasFinanceiras: String = "",
     val concordaVacinacao: Boolean = false,
     val taxaDoacao: Boolean = false,
-    val imagens: String = ""
+    val imagens: List<String> = emptyList()
 )

@@ -18,6 +18,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectIndexed
 import kotlinx.coroutines.launch
 import androidx.core.graphics.toColorInt
+import br.edu.unifebe.projeto20.view.FormularioAdocaoActivity
 
 @Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
@@ -103,7 +104,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnAdocao.setOnClickListener {
-            val intentAdocao = Intent(this, FormularioActivity::class.java)
+            val intentAdocao = Intent(this, FormularioAdocaoActivity::class.java)
             startActivity(intentAdocao)
         }
 

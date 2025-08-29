@@ -38,7 +38,7 @@
             android:exported="true">
         </activity>
         <activity
-            android:name=".FormularioActivity"
+            android:name=".view.FormularioAdocaoActivity"
             android:exported="true">
         </activity>
     </application>
