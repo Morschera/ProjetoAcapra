@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +20,7 @@ class FormularioAdocaoActivity : AppCompatActivity() {
     private val storage = FirebaseStorage.getInstance()
     private val listaImagensSelecionadas = mutableListOf<Uri>()
     private val imagensUrls = mutableListOf<String>()
+    private lateinit var progressBar: ProgressBar
 
     private val selecionarImagensLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -46,6 +48,7 @@ class FormularioAdocaoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.formulario_view)
 
+        progressBar = findViewById(R.id.progressBar)
         adocaoRepository = AdocaoRepository()
 
         val nomeEditText: EditText = findViewById(R.id.edtNomeCompleto)
@@ -71,7 +74,6 @@ class FormularioAdocaoActivity : AppCompatActivity() {
         val btnVoltar = findViewById<Button>(R.id.btnVoltar)
         val btnSelecionarImagem = findViewById<Button>(R.id.btnSelecionarImagem)
 
-        // Botão para selecionar imagens
         btnSelecionarImagem.setOnClickListener {
             val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
                 type = "image/*"
@@ -81,13 +83,24 @@ class FormularioAdocaoActivity : AppCompatActivity() {
         }
 
         enviarButton.setOnClickListener {
+            if (!validarCamposObrigatorios(
+                    nomeEditText, telefoneEditText, animalEditText, idadeEditText,
+                    rgConcordaResidencia, outrosAnimaisEditText, rgCastradosVacinados,
+                    casaPropriaEditText, rgLocalSeguro, cepEditText, cidadeEditText,
+                    ufEditText, ruaNumeroEditText, bairroEditText, rendaEditText,
+                    condicoesEditText, rgVacinacao, rgTaxaDoacao
+                )
+            ) return@setOnClickListener
+
+            progressBar.visibility = View.VISIBLE
+
             if (listaImagensSelecionadas.isNotEmpty()) {
                 uploadImagens { urls ->
                     salvarFormulario(
                         nomeEditText.text.toString(),
                         telefoneEditText.text.toString(),
                         animalEditText.text.toString(),
-                        idadeEditText.text.toString().toIntOrNull() ?: 0,
+                        idadeEditText.text.toString().toInt(),
                         getRadioGroupValue(rgConcordaResidencia) == "Sim",
                         outrosAnimaisEditText.text.toString(),
                         getRadioGroupValue(rgCastradosVacinados) == "Sim",
@@ -98,7 +111,7 @@ class FormularioAdocaoActivity : AppCompatActivity() {
                         ufEditText.text.toString(),
                         ruaNumeroEditText.text.toString(),
                         bairroEditText.text.toString(),
-                        rendaEditText.text.toString().toIntOrNull() ?: 0,
+                        rendaEditText.text.toString().toInt(),
                         condicoesEditText.text.toString(),
                         getRadioGroupValue(rgVacinacao) == "Sim",
                         getRadioGroupValue(rgTaxaDoacao) == "Sim",
@@ -106,31 +119,35 @@ class FormularioAdocaoActivity : AppCompatActivity() {
                     )
                 }
             } else {
-                salvarFormulario(
-                    nomeEditText.text.toString(),
-                    telefoneEditText.text.toString(),
-                    animalEditText.text.toString(),
-                    idadeEditText.text.toString().toIntOrNull() ?: 0,
-                    getRadioGroupValue(rgConcordaResidencia) == "Sim",
-                    outrosAnimaisEditText.text.toString(),
-                    getRadioGroupValue(rgCastradosVacinados) == "Sim",
-                    casaPropriaEditText.text.toString(),
-                    getRadioGroupValue(rgLocalSeguro) == "Sim",
-                    cepEditText.text.toString(),
-                    cidadeEditText.text.toString(),
-                    ufEditText.text.toString(),
-                    ruaNumeroEditText.text.toString(),
-                    bairroEditText.text.toString(),
-                    rendaEditText.text.toString().toIntOrNull() ?: 0,
-                    condicoesEditText.text.toString(),
-                    getRadioGroupValue(rgVacinacao) == "Sim",
-                    getRadioGroupValue(rgTaxaDoacao) == "Sim",
-                    emptyList()
-                )
+                Toast.makeText(this, "Selecione ao menos uma imagem!", Toast.LENGTH_SHORT).show()
+                progressBar.visibility = View.GONE
             }
         }
 
         btnVoltar.setOnClickListener { finish() }
+    }
+
+    private fun validarCamposObrigatorios(
+        vararg campos: Any
+    ): Boolean {
+        for (campo in campos) {
+            when (campo) {
+                is EditText -> {
+                    if (campo.text.toString().trim().isEmpty()) {
+                        campo.error = "Campo obrigatório"
+                        campo.requestFocus()
+                        return false
+                    }
+                }
+                is RadioGroup -> {
+                    if (campo.checkedRadioButtonId == -1) {
+                        Toast.makeText(this, "Selecione uma opção obrigatória", Toast.LENGTH_SHORT).show()
+                        return false
+                    }
+                }
+            }
+        }
+        return true
     }
 
     private fun salvarFormulario(
@@ -175,7 +192,13 @@ class FormularioAdocaoActivity : AppCompatActivity() {
             taxaDoacao = concordaTaxa,
             imagens = imagens
         )
-        adocaoRepository.salvarFormulario(this, formulario)
+        adocaoRepository.salvarFormulario(this, formulario) {
+            runOnUiThread {
+                progressBar.visibility = View.GONE
+                Toast.makeText(this, "Formulário enviado com sucesso!", Toast.LENGTH_SHORT).show()
+                finish()
+            }
+        }
     }
 
     private fun uploadImagens(onComplete: (List<String>) -> Unit) {
@@ -185,15 +208,28 @@ class FormularioAdocaoActivity : AppCompatActivity() {
 
         for (uri in listaImagensSelecionadas) {
             val ref = storage.reference.child("formularios/${UUID.randomUUID()}.jpg")
-            ref.putFile(uri).addOnSuccessListener {
-                ref.downloadUrl.addOnSuccessListener { downloadUri ->
-                    imagensUrls.add(downloadUri.toString())
-                    uploaded++
-                    if (uploaded == total) {
-                        onComplete(imagensUrls.toList()) // retorna lista
+
+            ref.putFile(uri)
+                .addOnSuccessListener {
+                    ref.downloadUrl.addOnSuccessListener { downloadUri ->
+                        imagensUrls.add(downloadUri.toString())
+                        uploaded++
+                        if (uploaded == total) {
+                            onComplete(imagensUrls.toList())
+                        }
                     }
                 }
-            }
+                .addOnFailureListener { e ->
+                    uploaded++
+                    Toast.makeText(
+                        this,
+                        "Falha ao enviar uma imagem: ${e.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    if (uploaded == total) {
+                        onComplete(imagensUrls.toList())
+                    }
+                }
         }
     }
 

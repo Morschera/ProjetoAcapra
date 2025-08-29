@@ -11,16 +11,18 @@ class AdocaoRepository {
 
     private val db = Firebase.firestore
 
-    fun salvarFormulario(context: Context, formulario: FormularioAdocao) {
+    fun salvarFormulario(context: Context, formulario: FormularioAdocao, onComplete: () -> Unit) {
         db.collection("formulários")
             .add(formulario)
             .addOnSuccessListener { documentReference ->
-                Log.d("Firestore", "Formulário de adoção adicionado com ID: ${documentReference.id}")
+                Log.d("Firestore", "Formulário adicionado com ID: ${documentReference.id}")
                 Toast.makeText(context, "Formulário enviado com sucesso!", Toast.LENGTH_SHORT).show()
+                onComplete()
             }
             .addOnFailureListener { e ->
-                Log.e("Firestore", "Erro ao adicionar documento de adoção", e)
+                Log.e("Firestore", "Erro ao adicionar documento", e)
                 Toast.makeText(context, "Erro ao enviar formulário.", Toast.LENGTH_SHORT).show()
+                onComplete()
             }
     }
 }

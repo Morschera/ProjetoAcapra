@@ -1,394 +1,414 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:fitsSystemWindows="true"
-    android:orientation="vertical">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#2E2654"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="8dp"
-        android:paddingTop="32dp">
-
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginEnd="16dp"
-            android:contentDescription="@string/logo_acapra"
-            android:src="@drawable/logo" />
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/btnVoltar"
-            android:layout_width="125dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:background="@android:drawable/btn_default"
-            android:backgroundTint="#FFFFFF"
-            android:text="@string/voltar"
-            android:textAllCaps="false"
-            android:textColor="#2E2654"
-            tools:ignore="TextContrastCheck" />
-    </LinearLayout>
+    android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:fitsSystemWindows="true"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/txtTitulo"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:gravity="center"
-                android:text="@string/formul_rio_de_ado_o"
-                android:textColor="#000000"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                android:background="#2E2654"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:paddingTop="32dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/insira_seu_nome_completo"
-                android:textSize="18sp"
-                tools:ignore="TextSizeCheck" />
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="16dp"
+                    android:contentDescription="@string/logo_acapra"
+                    android:src="@drawable/logo" />
 
-            <EditText
-                android:id="@+id/edtNomeCompleto"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/nome_completo"
-                android:minHeight="48dp"
-                tools:ignore="Autofill,TextFields,TextContrastCheck,VisualLintTextFieldSize" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/insira_seu_n_mero_de_celular"
-                android:textSize="18sp"
-                tools:ignore="TextSizeCheck" />
-
-            <EditText
-                android:id="@+id/edtTelefone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/telefone"
-                android:inputType="phone"
-                android:minHeight="48dp"
-                tools:ignore="Autofill,TextContrastCheck,VisualLintTextFieldSize" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/insira_o_nome_do_animal_de_seu_interesse"
-                android:textSize="18sp"
-                tools:ignore="TextSizeCheck" />
-
-            <EditText
-                android:id="@+id/edtAnimalInteresse"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/animal_de_interesse"
-                android:minHeight="48dp"
-                tools:ignore="Autofill,TextContrastCheck,TextFields,VisualLintTextFieldSize" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/insira_sua_idade"
-                android:textSize="18sp"
-                tools:ignore="TextSizeCheck" />
-
-            <EditText
-                android:id="@+id/edtIdade"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/idade"
-                android:inputType="number"
-                android:minHeight="48dp"
-                tools:ignore="Autofill,TextContrastCheck,VisualLintTextFieldSize" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/todos_na_resid_ncia_concordam_com_a_ado_o"
-                android:textSize="18sp"
-                tools:ignore="TextSizeCheck" />
-
-            <RadioGroup
-                android:id="@+id/rgConcordaResidencia"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/rbConcordaSim"
-                    android:layout_width="wrap_content"
+                <Button
+                    android:id="@+id/btnVoltar"
+                    android:layout_width="125dp"
                     android:layout_height="wrap_content"
-                    android:text="Sim"
-                    tools:ignore="DuplicateSpeakableTextCheck,HardcodedText" />
+                    android:layout_marginEnd="8dp"
+                    android:background="@android:drawable/btn_default"
+                    android:backgroundTint="#FFFFFF"
+                    android:text="@string/voltar"
+                    android:textAllCaps="false"
+                    android:textColor="#2E2654"
+                    tools:ignore="TextContrastCheck" />
+            </LinearLayout>
 
-                <RadioButton
-                    android:id="@+id/rbConcordaNao"
-                    android:layout_width="wrap_content"
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Não"
-                    tools:ignore="DuplicateSpeakableTextCheck,HardcodedText" />
-            </RadioGroup>
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/voc_tem_outros_animais_em_casa_se_sim_quantos_e_quais"
-                android:textSize="18sp"
-                tools:ignore="TextSizeCheck" />
+                    <TextView
+                        android:id="@+id/txtTitulo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:gravity="center"
+                        android:text="@string/formul_rio_de_ado_o"
+                        android:textColor="#000000"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/edtOutrosAnimais"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/voc_tem_outros_animais_se_sim_quantos_e_quais"
-                tools:ignore="Autofill,TextContrastCheck,TextFields,VisualLintTextFieldSize" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/insira_seu_nome_completo"
+                        android:textSize="18sp"
+                        tools:ignore="TextSizeCheck" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/s_o_castrados_e_vacinados"
-                android:textSize="18sp" />
+                    <EditText
+                        android:id="@+id/edtNomeCompleto"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/nome_completo"
+                        android:minHeight="48dp"
+                        tools:ignore="Autofill,TextFields,TextContrastCheck,VisualLintTextFieldSize" />
 
-            <RadioGroup
-                android:id="@+id/rgCastradosVacinados"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/insira_seu_n_mero_de_celular"
+                        android:textSize="18sp"
+                        tools:ignore="TextSizeCheck" />
 
-                <RadioButton
-                    android:id="@+id/rbCastradoSim"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/sim" />
+                    <EditText
+                        android:id="@+id/edtTelefone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/telefone"
+                        android:inputType="phone"
+                        android:minHeight="48dp"
+                        tools:ignore="Autofill,TextContrastCheck,VisualLintTextFieldSize" />
 
-                <RadioButton
-                    android:id="@+id/rbCastradoNao"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/n_o" />
-            </RadioGroup>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/insira_o_nome_do_animal_de_seu_interesse"
+                        android:textSize="18sp"
+                        tools:ignore="TextSizeCheck" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/voc_mora_em_casa_ou_apartamento_alugado_ou_pr_prio"
-                android:textSize="18sp"
-                tools:ignore="TextSizeCheck" />
+                    <EditText
+                        android:id="@+id/edtAnimalInteresse"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/animal_de_interesse"
+                        android:minHeight="48dp"
+                        tools:ignore="Autofill,TextContrastCheck,TextFields,VisualLintTextFieldSize" />
 
-            <EditText
-                android:id="@+id/edtCasaPropria"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/voc_mora_em_casa_ou_apartamento_pr_prio_ou_alugado"
-                tools:ignore="Autofill,TextFields,TextContrastCheck,VisualLintTextFieldSize" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/insira_sua_idade"
+                        android:textSize="18sp"
+                        tools:ignore="TextSizeCheck" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/voc_tem_um_local_seguro_para_o_seu_cachorro_ou_gato"
-                android:textSize="18sp"
-                tools:ignore="TextSizeCheck" />
+                    <EditText
+                        android:id="@+id/edtIdade"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/idade"
+                        android:inputType="number"
+                        android:minHeight="48dp"
+                        tools:ignore="Autofill,TextContrastCheck,VisualLintTextFieldSize" />
 
-            <RadioGroup
-                android:id="@+id/rgLocalSeguro"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/todos_na_resid_ncia_concordam_com_a_ado_o"
+                        android:textSize="18sp"
+                        tools:ignore="TextSizeCheck" />
 
-                <RadioButton
-                    android:id="@+id/rbLocalSim"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sim"
-                    tools:ignore="HardcodedText" />
+                    <RadioGroup
+                        android:id="@+id/rgConcordaResidencia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                <RadioButton
-                    android:id="@+id/rbLocalNao"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Não"
-                    tools:ignore="HardcodedText" />
-            </RadioGroup>
+                        <RadioButton
+                            android:id="@+id/rbConcordaSim"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sim"
+                            tools:ignore="DuplicateSpeakableTextCheck,HardcodedText" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/insira_seu_endere_o"
-                android:textSize="18sp" />
+                        <RadioButton
+                            android:id="@+id/rbConcordaNao"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Não"
+                            tools:ignore="DuplicateSpeakableTextCheck,HardcodedText" />
+                    </RadioGroup>
 
-            <EditText
-                android:id="@+id/edtCep"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/cep"
-                android:inputType="number"
-                android:minHeight="48dp"
-                tools:ignore="Autofill,VisualLintTextFieldSize" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/voc_tem_outros_animais_em_casa_se_sim_quantos_e_quais"
+                        android:textSize="18sp"
+                        tools:ignore="TextSizeCheck" />
 
-            <EditText
-                android:id="@+id/edtCidade"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Cidade"
-                android:minHeight="48dp"
-                tools:ignore="Autofill,HardcodedText,TextFields,VisualLintTextFieldSize,TextContrastCheck" />
+                    <EditText
+                        android:id="@+id/edtOutrosAnimais"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/voc_tem_outros_animais_se_sim_quantos_e_quais"
+                        tools:ignore="Autofill,TextContrastCheck,TextFields,VisualLintTextFieldSize" />
 
-            <EditText
-                android:id="@+id/edtUf"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/estado_uf"
-                android:minHeight="48dp"
-                tools:ignore="Autofill,TextFields,VisualLintTextFieldSize,TextContrastCheck" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/s_o_castrados_e_vacinados"
+                        android:textSize="18sp" />
 
-            <EditText
-                android:id="@+id/edtRuaNumero"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/rua_e_n_mero"
-                android:minHeight="48dp"
-                tools:ignore="Autofill,TextFields,VisualLintTextFieldSize,TextContrastCheck" />
+                    <RadioGroup
+                        android:id="@+id/rgCastradosVacinados"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/edtBairro"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/bairro"
-                tools:ignore="Autofill,TextFields,VisualLintTextFieldSize,TextContrastCheck,TouchTargetSizeCheck" />
+                        <RadioButton
+                            android:id="@+id/rbCastradoSim"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sim" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/insira_sua_renda_mensal"
-                android:textSize="18sp" />
+                        <RadioButton
+                            android:id="@+id/rbCastradoNao"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/n_o" />
+                    </RadioGroup>
 
-            <EditText
-                android:id="@+id/edtRenda"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/ex_1600"
-                android:inputType="number"
-                android:minHeight="48dp"
-                tools:ignore="Autofill,VisualLintTextFieldSize,TextContrastCheck" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/voc_mora_em_casa_ou_apartamento_alugado_ou_pr_prio"
+                        android:textSize="18sp"
+                        tools:ignore="TextSizeCheck" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/voc_tem_condi_es_f_sicas_mentais_e_financeiras_de_manter_um_animal_uma_boa_ra_o_visitas_ao_veterin_rio_castra_o_passeios"
-                android:textSize="18sp"
-                tools:ignore="VisualLintLongText" />
+                    <EditText
+                        android:id="@+id/edtCasaPropria"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/voc_mora_em_casa_ou_apartamento_pr_prio_ou_alugado"
+                        tools:ignore="Autofill,TextFields,TextContrastCheck,VisualLintTextFieldSize" />
 
-            <EditText
-                android:id="@+id/edtCondicoes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint=""
-                android:minHeight="48dp"
-                tools:ignore="Autofill,LabelFor,TextFields,VisualLintTextFieldSize,SpeakableTextPresentCheck" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/voc_tem_um_local_seguro_para_o_seu_cachorro_ou_gato"
+                        android:textSize="18sp"
+                        tools:ignore="TextSizeCheck" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/a_castra_o_e_vacina_o_do_animal_obrigat_ria_voc_concorda_com_isso"
-                android:textSize="18sp" />
+                    <RadioGroup
+                        android:id="@+id/rgLocalSeguro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-            <RadioGroup
-                android:id="@+id/rgVacinacao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                        <RadioButton
+                            android:id="@+id/rbLocalSim"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sim"
+                            tools:ignore="HardcodedText" />
 
-                <RadioButton
-                    android:id="@+id/rbVacinacaoSim"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sim"
-                    tools:ignore="HardcodedText,DuplicateSpeakableTextCheck" />
+                        <RadioButton
+                            android:id="@+id/rbLocalNao"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Não"
+                            tools:ignore="HardcodedText" />
+                    </RadioGroup>
 
-                <RadioButton
-                    android:id="@+id/rbVacinacaoNao"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Não"
-                    tools:ignore="HardcodedText,DuplicateSpeakableTextCheck" />
-            </RadioGroup>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/insira_seu_endere_o"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/edtCep"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/cep"
+                        android:inputType="number"
+                        android:minHeight="48dp"
+                        tools:ignore="Autofill,VisualLintTextFieldSize" />
+
+                    <EditText
+                        android:id="@+id/edtCidade"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Cidade"
+                        android:minHeight="48dp"
+                        tools:ignore="Autofill,HardcodedText,TextFields,VisualLintTextFieldSize,TextContrastCheck" />
+
+                    <EditText
+                        android:id="@+id/edtUf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/estado_uf"
+                        android:minHeight="48dp"
+                        tools:ignore="Autofill,TextFields,VisualLintTextFieldSize,TextContrastCheck" />
+
+                    <EditText
+                        android:id="@+id/edtRuaNumero"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/rua_e_n_mero"
+                        android:minHeight="48dp"
+                        tools:ignore="Autofill,TextFields,VisualLintTextFieldSize,TextContrastCheck" />
+
+                    <EditText
+                        android:id="@+id/edtBairro"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/bairro"
+                        tools:ignore="Autofill,TextFields,VisualLintTextFieldSize,TextContrastCheck,TouchTargetSizeCheck" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/insira_sua_renda_mensal"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/edtRenda"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/ex_1600"
+                        android:inputType="number"
+                        android:minHeight="48dp"
+                        tools:ignore="Autofill,VisualLintTextFieldSize,TextContrastCheck" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/voc_tem_condi_es_f_sicas_mentais_e_financeiras_de_manter_um_animal_uma_boa_ra_o_visitas_ao_veterin_rio_castra_o_passeios"
+                        android:textSize="18sp"
+                        tools:ignore="VisualLintLongText" />
+
+                    <EditText
+                        android:id="@+id/edtCondicoes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint=""
+                        android:minHeight="48dp"
+                        tools:ignore="Autofill,LabelFor,TextFields,VisualLintTextFieldSize,SpeakableTextPresentCheck" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/a_castra_o_e_vacina_o_do_animal_obrigat_ria_voc_concorda_com_isso"
+                        android:textSize="18sp" />
+
+                    <RadioGroup
+                        android:id="@+id/rgVacinacao"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rbVacinacaoSim"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sim"
+                            tools:ignore="HardcodedText,DuplicateSpeakableTextCheck" />
+
+                        <RadioButton
+                            android:id="@+id/rbVacinacaoNao"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Não"
+                            tools:ignore="HardcodedText,DuplicateSpeakableTextCheck" />
+                    </RadioGroup>
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/existe_uma_taxa_de_ado_o_de_r_30_00_voc_concorda_em_contribuir"
-                android:textSize="18sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/existe_uma_taxa_de_ado_o_de_r_30_00_voc_concorda_em_contribuir"
+                        android:textSize="18sp" />
 
-            <RadioGroup
-                android:id="@+id/rgTaxaDoacao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                    <RadioGroup
+                        android:id="@+id/rgTaxaDoacao"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                <RadioButton
-                    android:id="@+id/rbTaxaSim"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sim"
-                    tools:ignore="HardcodedText" />
+                        <RadioButton
+                            android:id="@+id/rbTaxaSim"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sim"
+                            tools:ignore="HardcodedText" />
 
-                <RadioButton
-                    android:id="@+id/rbTaxaNao"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Não"
-                    tools:ignore="HardcodedText" />
-            </RadioGroup>
+                        <RadioButton
+                            android:id="@+id/rbTaxaNao"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Não"
+                            tools:ignore="HardcodedText" />
+                    </RadioGroup>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/favor_enviar_os_seguintes_documentos_nfoto_do_rg_nfoto_do_comprovante_de_renda_nfoto_do_local_onde_o_animal_ir_ficar_terreno_casa_canil_nfoto_das_telas_nse_tiver_outros_animais_foto_dos_mesmos_e_das_suas_carteiras_de_vacina_o"
-                android:textSize="18sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/favor_enviar_os_seguintes_documentos_nfoto_do_rg_nfoto_do_comprovante_de_renda_nfoto_do_local_onde_o_animal_ir_ficar_terreno_casa_canil_nfoto_das_telas_nse_tiver_outros_animais_foto_dos_mesmos_e_das_suas_carteiras_de_vacina_o"
+                        android:textSize="18sp" />
 
-            <Button
-                android:id="@+id/btnSelecionarImagem"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/selecionar_imagens_complementares"
-                tools:ignore="VisualLintButtonSize" />
+                    <Button
+                        android:id="@+id/btnSelecionarImagem"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/selecionar_imagens_complementares"
+                        tools:ignore="VisualLintButtonSize" />
 
-            <Button
-                android:id="@+id/btnEnviarFormulario"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:background="#5b5786"
-                android:text="@string/enviar_formul_rio"
-                android:textColor="#FFFFFF"
-                tools:ignore="VisualLintButtonSize" />
+                    <Button
+                        android:id="@+id/btnEnviarFormulario"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:background="#5b5786"
+                        android:text="@string/enviar_formul_rio"
+                        android:textColor="#FFFFFF"
+                        tools:ignore="VisualLintButtonSize" />
+
+                </LinearLayout>
+            </ScrollView>
 
         </LinearLayout>
+
     </ScrollView>
 
-</LinearLayout>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
+</FrameLayout>
