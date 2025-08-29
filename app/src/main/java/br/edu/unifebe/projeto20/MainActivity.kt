@@ -63,10 +63,6 @@ class MainActivity : AppCompatActivity() {
                 binding.btCachorro.setTextColor(R.color.dark_gray)
                 binding.btGato.setBackgroundResource(R.drawable.bg_button_disabled)
                 binding.btGato.setTextColor(R.color.dark_gray)
-                binding.btLula.setBackgroundResource(R.drawable.bg_button_disabled)
-                binding.btLula.setTextColor(R.color.dark_gray)
-                binding.btBolsonaro.setBackgroundResource(R.drawable.bg_button_disabled)
-                binding.btBolsonaro.setTextColor(R.color.dark_gray)
                 binding.recyclerViewProducts.visibility = View.VISIBLE
                 binding.txtListTitle.text = "Todos"
             }
@@ -80,10 +76,6 @@ class MainActivity : AppCompatActivity() {
                     binding.btTodos.setTextColor(R.color.dark_gray)
                     binding.btGato.setBackgroundResource(R.drawable.bg_button_disabled)
                     binding.btGato.setTextColor(R.color.dark_gray)
-                    binding.btLula.setBackgroundResource(R.drawable.bg_button_disabled)
-                    binding.btLula.setTextColor(R.color.dark_gray)
-                    binding.btBolsonaro.setBackgroundResource(R.drawable.bg_button_disabled)
-                    binding.btBolsonaro.setTextColor(R.color.dark_gray)
                     binding.recyclerViewProducts.visibility = View.VISIBLE
                     binding.txtListTitle.text = "Cachorro"
                 }
@@ -97,47 +89,9 @@ class MainActivity : AppCompatActivity() {
                         binding.btTodos.setTextColor(R.color.dark_gray)
                         binding.btCachorro.setBackgroundResource(R.drawable.bg_button_disabled)
                         binding.btCachorro.setTextColor(R.color.dark_gray)
-                        binding.btLula.setBackgroundResource(R.drawable.bg_button_disabled)
-                        binding.btLula.setTextColor(R.color.dark_gray)
-                        binding.btBolsonaro.setBackgroundResource(R.drawable.bg_button_disabled)
-                        binding.btBolsonaro.setTextColor(R.color.dark_gray)
                         binding.recyclerViewProducts.visibility = View.VISIBLE
                         binding.txtListTitle.text = "Gato"
                     }
-                }
-                    binding.btLula.setOnClickListener {
-                        clicked = true
-                        if (clicked) {
-                            binding.btLula.setBackgroundResource(R.drawable.bg_button_enabled)
-                            binding.btLula.setTextColor(Color.WHITE)
-                            binding.btTodos.setBackgroundResource(R.drawable.bg_button_disabled)
-                            binding.btTodos.setTextColor(R.color.dark_gray)
-                            binding.btCachorro.setBackgroundResource(R.drawable.bg_button_disabled)
-                            binding.btCachorro.setTextColor(R.color.dark_gray)
-                            binding.btGato.setBackgroundResource(R.drawable.bg_button_disabled)
-                            binding.btGato.setTextColor(R.color.dark_gray)
-                            binding.btBolsonaro.setBackgroundResource(R.drawable.bg_button_disabled)
-                            binding.btBolsonaro.setTextColor(R.color.dark_gray)
-                            binding.recyclerViewProducts.visibility = View.VISIBLE
-                            binding.txtListTitle.text = "Lula"
-                        }
-                    }
-                        binding.btBolsonaro.setOnClickListener {
-                            clicked = true
-                            if (clicked) {
-                                binding.btBolsonaro.setBackgroundResource(R.drawable.bg_button_enabled)
-                                binding.btBolsonaro.setTextColor(Color.WHITE)
-                                binding.btTodos.setBackgroundResource(R.drawable.bg_button_disabled)
-                                binding.btTodos.setTextColor(R.color.dark_gray)
-                                binding.btCachorro.setBackgroundResource(R.drawable.bg_button_disabled)
-                                binding.btCachorro.setTextColor(R.color.dark_gray)
-                                binding.btGato.setBackgroundResource(R.drawable.bg_button_disabled)
-                                binding.btGato.setTextColor(R.color.dark_gray)
-                                binding.btLula.setBackgroundResource(R.drawable.bg_button_disabled)
-                                binding.btLula.setTextColor(R.color.dark_gray)
-                                binding.recyclerViewProducts.visibility = View.VISIBLE
-                                binding.txtListTitle.text = "Bolsonaro"
-                            }
                         }
 
         val btnIrLogin = findViewById<Button>(R.id.btnIrLogin)
