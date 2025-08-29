@@ -43,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             val user = auth.currentUser
-                            val intent = Intent(this, ListaFormulariosActivity::class.java)
+                            val intent = Intent(this, AdmFormularioActivity::class.java)
                             intent.putExtra("USER_EMAIL", user?.email)
                             Toast.makeText(this, "Bem-vindo, ${user?.email}", Toast.LENGTH_SHORT).show()
                             startActivity(intent)

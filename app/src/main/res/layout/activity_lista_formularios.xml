@@ -1,53 +1,185 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F5F5F5">
+    android:fitsSystemWindows="true">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="#6A1B9A"
-        android:padding="8dp">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#2E2654"
+        android:padding="8dp"
+        android:gravity="center_vertical">
 
-        <ImageButton
-            android:id="@+id/btnVoltar"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:background="@android:color/transparent"
-            android:src="@android:drawable/ic_menu_revert"
-            android:tint="@android:color/white"
-            android:contentDescription="Voltar"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"/>
+        <ImageView
+            android:id="@+id/Logo"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="Logo ACAPRA"
+            android:src="@drawable/logo" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btnPet"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            android:background="@android:drawable/btn_default"
+            android:backgroundTint="#FFFFFF"
+            android:text="@string/adicionar_pet"
+            android:textAllCaps="false"
+            android:textColor="#2E2654" />
+
+        <Button
+            android:id="@+id/btnForms"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="@android:drawable/btn_default"
+            android:backgroundTint="#FFFFFF"
+            android:text="@string/formul_rios"
+            android:textAllCaps="false"
+            android:textColor="#2E2654"/>
+    </LinearLayout>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:divider="?android:attr/dividerHorizontal"
+        android:showDividers="middle">
 
         <TextView
-            android:id="@+id/tvTitulo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lista de Formulários"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/white"
-            android:layout_centerInParent="true"/>
-    </RelativeLayout>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="16dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="6dp">
-
-        <ListView
-            android:id="@+id/listView"
+            android:id="@+id/tvNomeCompleto"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:divider="@android:color/darker_gray"
-            android:dividerHeight="1dp"
-            android:padding="8dp"/>
-    </androidx.cardview.widget.CardView>
+            android:layout_height="wrap_content"
+            android:text="Nome: "
+            android:textStyle="bold"
+            android:textSize="18sp"/>
 
+        <TextView
+            android:id="@+id/tvTelefone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Telefone:" />
+
+        <TextView
+            android:id="@+id/tvAnimalInteresse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Animal de interesse:" />
+
+        <TextView
+            android:id="@+id/tvIdade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Idade:" />
+
+        <TextView
+            android:id="@+id/tvConcordaResidencia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Concorda Residência" />
+
+        <TextView
+            android:id="@+id/tvOutrosAnimais"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Outros animais:" />
+
+        <TextView
+            android:id="@+id/tvCondicoes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Condições:" />
+
+        <TextView
+            android:id="@+id/tvMoradia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Moradia:" />
+
+        <TextView
+            android:id="@+id/tvLocalSeguro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Local Seguro:" />
+
+        <TextView
+            android:id="@+id/tvEndereco"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Endereço:" />
+
+        <TextView
+            android:id="@+id/tvCidadeUf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cidade / UF:" />
+
+        <TextView
+            android:id="@+id/tvBairro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bairro:" />
+
+        <TextView
+            android:id="@+id/tvRenda"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Renda:" />
+
+        <TextView
+            android:id="@+id/tvCastradosVacinados"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Castrados/Vacinados:" />
+
+        <TextView
+            android:id="@+id/tvVacinacao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Concorda com Vacinação:" />
+
+        <TextView
+            android:id="@+id/tvTaxaDoacao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Aceita taxa de doação:" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Imagens:"
+            android:textStyle="bold"
+            android:paddingTop="12dp"/>
+
+        <ImageView
+            android:id="@+id/img1"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:contentDescription="Imagem 1"/>
+
+        <ImageView
+            android:id="@+id/img2"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:contentDescription="Imagem 2"/>
+    </LinearLayout>
+    </ScrollView>
 </LinearLayout>
