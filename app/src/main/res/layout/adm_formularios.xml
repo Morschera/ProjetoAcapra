@@ -90,8 +90,8 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <TextView
-                android:id="@+id/txt1"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewFormularios"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
@@ -105,35 +105,6 @@
                 android:textColor="#000000"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/txt2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:layout_marginBottom="8dp"
-                android:background="#FFFFFF"
-                android:backgroundTint="#FFFFFF"
-                android:elevation="1dp"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="@string/carlos_alberto"
-                android:textColor="#000000"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/txt3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:layout_marginBottom="8dp"
-                android:background="#FFFFFF"
-                android:backgroundTint="#FFFFFF"
-                android:elevation="1dp"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="@string/ketlin_fernandes"
-                android:textColor="#000000"
-                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
