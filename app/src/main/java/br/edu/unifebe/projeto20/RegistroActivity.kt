@@ -46,7 +46,7 @@ class RegistroActivity : AppCompatActivity() {
                         db.collection("usuarios").document(userId).set(usuario)
                             .addOnSuccessListener {
                                 Toast.makeText(this, "Usuário registrado com sucesso!", Toast.LENGTH_SHORT).show()
-                                finish() // volta para tela anterior
+                                finish()
                             }
                             .addOnFailureListener {
                                 Toast.makeText(this, "Erro ao salvar dados: ${it.message}", Toast.LENGTH_SHORT).show()

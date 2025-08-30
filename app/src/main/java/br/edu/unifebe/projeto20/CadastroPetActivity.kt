@@ -53,7 +53,7 @@ class CadastroPetActivity : AppCompatActivity() {
         btnVoltar = findViewById(R.id.btnVoltar)
 
         btnVoltar.setOnClickListener {
-            finish() // Fecha a Activity e retorna pra anterior
+            finish()
         }
 
         btnEscolherImagem.setOnClickListener {
@@ -95,7 +95,6 @@ class CadastroPetActivity : AppCompatActivity() {
             return
         }
 
-        // Upload da imagem para o Firebase Storage
         val fileRef = storage.child("pets/${UUID.randomUUID()}.jpg")
         fileRef.putFile(imageUri!!)
             .addOnSuccessListener {

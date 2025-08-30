@@ -49,7 +49,6 @@ class DetalheFormularioActivity : AppCompatActivity() {
             .addOnSuccessListener { document ->
                 if (document != null && document.exists()) {
 
-                    // Strings
                     findViewById<TextView>(R.id.tvNomeCompleto).text =
                         "Nome: ${document.getString("nomeCompleto")}"
                     findViewById<TextView>(R.id.tvTelefone).text =
@@ -69,7 +68,6 @@ class DetalheFormularioActivity : AppCompatActivity() {
                     findViewById<TextView>(R.id.tvEndereco).text =
                         "Endereço: ${document.getString("ruaNumero")}, CEP: ${document.getString("cep")}"
 
-                    // Numbers
                     val idade = document.getLong("idade") ?: 0
                     findViewById<TextView>(R.id.tvIdade).text = "Idade: $idade"
 
@@ -97,7 +95,6 @@ class DetalheFormularioActivity : AppCompatActivity() {
                     findViewById<TextView>(R.id.tvTaxaDoacao).text =
                         "Aceita Taxa Doação: ${if (taxaDoacao) "Sim" else "Não"}"
 
-                    // Imagens
                     val imagens = document.get("imagens") as? List<String> ?: emptyList()
                     if (imagens.isNotEmpty()) {
                         Glide.with(this).load(imagens.getOrNull(0)).into(findViewById<ImageView>(R.id.img1))
