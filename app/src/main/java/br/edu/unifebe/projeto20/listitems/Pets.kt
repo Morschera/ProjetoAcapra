@@ -21,15 +21,15 @@ class Pets {
                 val petList = snapshot?.documents?.mapNotNull { doc ->
                     try {
                         Pet(
-                            nome = doc.getString("nomeAnimal") ?: "",
-                            descricao = doc.getString("Descricao") ?: "",
-                            imagemUrl = doc.getString("Imagem") ?: "",
-                            idade = doc.getString("Idade") ?: "",
-                            sexo = doc.getString("Sexo") ?: "",
-                            tipo = doc.getString("Tipo") ?: "",
-                            porte = doc.getString("Porte") ?: "",
-                            vacinado = doc.getBoolean("Vacinado") ?: false,
-                            castrado = doc.getBoolean("Castrado") ?: false
+                            nome = doc.getString("nome") ?: "",
+                            descricao = doc.getString("descricao") ?: "",
+                            imagemUrl = doc.getString("imagemUrl") ?: "",
+                            idade = doc.getString("idade") ?: "",
+                            sexo = doc.getString("sexo") ?: "",
+                            tipo = doc.getString("tipo") ?: "",
+                            porte = doc.getString("porte") ?: "",
+                            vacinado = doc.getBoolean("vacinado") ?: false,
+                            castrado = doc.getBoolean("castrado") ?: false
                         )
                     } catch (e: Exception) {
                         null

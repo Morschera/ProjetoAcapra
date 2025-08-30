@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -14,6 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 class DetalheFormularioActivity : AppCompatActivity() {
 
     private val db = FirebaseFirestore.getInstance()
+    private lateinit var btnVoltar: ImageButton
 
     companion object {
         const val EXTRA_FORM_ID = "formId"
@@ -31,22 +33,12 @@ class DetalheFormularioActivity : AppCompatActivity() {
             return
         }
 
-        val btnPet = findViewById<Button>(R.id.btnPet)
-        val btnFormularios = findViewById<Button>(R.id.btnForms)
-
-        val intentMain = Intent(this, MainActivity::class.java)
-        val intentFormulario = Intent(this, AdmFormularioActivity::class.java)
+        btnVoltar = findViewById(R.id.btnVoltar)
 
 
-        btnPet.setOnClickListener {
-            startActivity(intentMain)
+        btnVoltar.setOnClickListener {
+            finish()
         }
-
-
-        btnFormularios.setOnClickListener {
-            startActivity(intentFormulario)
-        }
-
 
         carregarFormulario(formId)
     }
@@ -121,4 +113,5 @@ class DetalheFormularioActivity : AppCompatActivity() {
                 Toast.makeText(this, "Erro ao carregar formulário", Toast.LENGTH_SHORT).show()
             }
     }
+
 }

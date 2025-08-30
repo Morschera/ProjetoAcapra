@@ -21,21 +21,15 @@ class AdmFormularioActivity : AppCompatActivity() {
 
         val btnPet = findViewById<Button>(R.id.btnPet)
         val btnRegistrarAdmin = findViewById<Button>(R.id.btnRegistraAdm)
-        val btnFormularios = findViewById<Button>(R.id.btnForms)
-
-        val intentMain = Intent(this, MainActivity::class.java)
+        val intentPet = Intent(this, CadastroPetActivity::class.java)
 
         btnPet.setOnClickListener {
-            startActivity(intentMain)
+            startActivity(intentPet)
         }
 
         btnRegistrarAdmin.setOnClickListener {
             val intent = Intent(this, RegistroActivity::class.java)
             startActivity(intent)
-        }
-
-        btnFormularios.setOnClickListener {
-            Toast.makeText(this, "Você já está nesta tela.", Toast.LENGTH_SHORT).show()
         }
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewFormularios)

@@ -69,7 +69,6 @@ class MainActivity : AppCompatActivity() {
 
                 launch(Dispatchers.Main) {
                     petsAdapter.notifyDataSetChanged()
-                    binding.txtListTitle.text = "Todos"
                     setSelectedButtons(binding.btTodos)
                 }
             }
@@ -80,7 +79,6 @@ class MainActivity : AppCompatActivity() {
             if (clicked) {
                 applyFilter(FilterType.TODOS)
                 setSelectedButtons(binding.btTodos)
-                binding.txtListTitle.text = "Todos"
             }
         }
 
@@ -89,7 +87,6 @@ class MainActivity : AppCompatActivity() {
             if (clicked) {
                 applyFilter(FilterType.CACHORRO)
                 setSelectedButtons(binding.btCachorro)
-                binding.txtListTitle.text = "Cachorro"
             }
         }
 
@@ -98,7 +95,6 @@ class MainActivity : AppCompatActivity() {
             if (clicked) {
                 applyFilter(FilterType.GATO)
                 setSelectedButtons(binding.btGato)
-                binding.txtListTitle.text = "Gato"
             }
         }
 
@@ -119,15 +115,11 @@ class MainActivity : AppCompatActivity() {
     private fun applyFilter(type: FilterType) {
         val filtered: List<Pet> = when (type) {
             FilterType.TODOS -> fullList
-
-
             FilterType.CACHORRO -> fullList.filter {
-                it.nome.contains("Cachorro", ignoreCase = true) ||
-                        it.descricao.contains("Cachorro", ignoreCase = true)
+                it.tipo.equals("Cachorro", ignoreCase = true)
             }
             FilterType.GATO -> fullList.filter {
-                it.nome.contains("Gato", ignoreCase = true) ||
-                        it.descricao.contains("Gato", ignoreCase = true)
+                it.tipo.equals("Gato", ignoreCase = true)
             }
         }
 
@@ -136,6 +128,7 @@ class MainActivity : AppCompatActivity() {
         petsAdapter.notifyDataSetChanged()
         binding.recyclerViewProducts.visibility = View.VISIBLE
     }
+
 
     private fun setSelectedButtons(selected: Button) {
         val all = listOf(binding.btTodos, binding.btCachorro, binding.btGato)
