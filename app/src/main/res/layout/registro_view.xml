@@ -10,14 +10,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
-        android:gravity="center"
         android:orientation="vertical"
         android:padding="24dp">
+
+        <!-- Botão de voltar (fora do card, igual no login) -->
+        <ImageButton
+            android:id="@+id/btnVoltar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_arrow_back"
+            android:contentDescription="@string/voltar"
+            android:layout_gravity="start"
+            android:padding="4dp"
+            app:tint="#5b5786" />
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="150dp"
             android:layout_height="123dp"
+            android:layout_gravity="center"
             android:layout_marginBottom="10dp"
             android:background="@android:color/transparent"
             android:contentDescription="@string/logo"
@@ -26,7 +38,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             app:cardBackgroundColor="#5b5786"
             app:cardCornerRadius="32dp"
             app:cardElevation="8dp">
@@ -35,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="10dp">
+                android:padding="16dp">
 
                 <TextView
                     android:id="@+id/textView"
@@ -43,11 +55,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="24dp"
                     android:gravity="center"
-                    android:text="Registrar"
+                    android:text="@string/registrar"
                     android:textColor="#FFFFFF"
                     android:textSize="28sp"
-                    android:textStyle="bold"
-                    tools:ignore="HardcodedText" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -63,9 +74,8 @@
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/edittext_background"
                     android:hint="@string/digite_seu_nome"
-                    android:inputType="textEmailAddress"
-                    android:paddingHorizontal="12dp"
-                    tools:ignore="Autofill,VisualLintTextFieldSize" />
+                    android:inputType="text"
+                    android:paddingHorizontal="12dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -80,14 +90,12 @@
                     android:layout_height="48dp"
                     android:layout_marginBottom="24dp"
                     android:background="@drawable/edittext_background"
-                    android:hint="Digite seu e-mail"
-                    android:inputType="textPassword"
-                    android:paddingHorizontal="12dp"
-                    tools:ignore="Autofill,HardcodedText,TextFields,VisualLintTextFieldSize" />
+                    android:hint="@string/digite_seu_e_mail"
+                    android:inputType="textEmailAddress"
+                    android:paddingHorizontal="12dp" />
 
                 <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/telefone"
                     android:textColor="#FFFFFF"
@@ -101,12 +109,10 @@
                     android:background="@drawable/edittext_background"
                     android:hint="@string/digite_seu_telefone"
                     android:inputType="phone"
-                    android:paddingHorizontal="12dp"
-                    tools:ignore="Autofill,VisualLintTextFieldSize" />
+                    android:paddingHorizontal="12dp" />
 
                 <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/senha"
                     android:textColor="#FFFFFF"
@@ -120,8 +126,7 @@
                     android:background="@drawable/edittext_background"
                     android:hint="@string/digite_sua_senha"
                     android:inputType="textPassword"
-                    android:paddingHorizontal="12dp"
-                    tools:ignore="Autofill,VisualLintTextFieldSize" />
+                    android:paddingHorizontal="12dp" />
 
                 <Button
                     android:id="@+id/btnRegistra"
@@ -132,8 +137,7 @@
                     android:text="@string/registrar"
                     android:textColor="#5b5786"
                     android:textSize="24sp"
-                    android:textStyle="bold"
-                    tools:ignore="DuplicateSpeakableTextCheck" />
+                    android:textStyle="bold" />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

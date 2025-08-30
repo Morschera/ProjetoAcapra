@@ -51,9 +51,17 @@ class FormularioAdocaoActivity : AppCompatActivity() {
         progressBar = findViewById(R.id.progressBar)
         adocaoRepository = AdocaoRepository()
 
+
+
+
+
         val nomeEditText: EditText = findViewById(R.id.edtNomeCompleto)
         val telefoneEditText: EditText = findViewById(R.id.edtTelefone)
         val animalEditText: EditText = findViewById(R.id.edtAnimalInteresse)
+        val animalInteresse = intent.getStringExtra("animal_interesse")
+        if (!animalInteresse.isNullOrEmpty()) {
+            animalEditText.setText(animalInteresse)
+        }
         val idadeEditText: EditText = findViewById(R.id.edtIdade)
         val rgConcordaResidencia: RadioGroup = findViewById(R.id.rgConcordaResidencia)
         val outrosAnimaisEditText: EditText = findViewById(R.id.edtOutrosAnimais)
@@ -71,7 +79,7 @@ class FormularioAdocaoActivity : AppCompatActivity() {
         val rgTaxaDoacao: RadioGroup = findViewById(R.id.rgTaxaDoacao)
 
         val enviarButton: Button = findViewById(R.id.btnEnviarFormulario)
-        val btnVoltar = findViewById<Button>(R.id.btnVoltar)
+        val btnVoltar = findViewById<ImageButton>(R.id.btnVoltar)
         val btnSelecionarImagem = findViewById<Button>(R.id.btnSelecionarImagem)
 
         btnSelecionarImagem.setOnClickListener {

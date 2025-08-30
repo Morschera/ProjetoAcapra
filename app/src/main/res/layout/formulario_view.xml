@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -37,17 +40,15 @@
                     android:layout_height="0dp"
                     android:layout_weight="1" />
 
-                <Button
+                <ImageButton
                     android:id="@+id/btnVoltar"
-                    android:layout_width="125dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="@android:drawable/btn_default"
-                    android:backgroundTint="#FFFFFF"
-                    android:text="@string/voltar"
-                    android:textAllCaps="false"
-                    android:textColor="#2E2654"
-                    tools:ignore="TextContrastCheck" />
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/voltar"
+                    android:src="@drawable/ic_arrow_back"
+                    android:tint="#FFFFFF"
+                    tools:ignore="UseAppTint" />
             </LinearLayout>
 
             <ScrollView

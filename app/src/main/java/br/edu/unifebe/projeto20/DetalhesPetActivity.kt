@@ -1,19 +1,26 @@
 package br.edu.unifebe.projeto20
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageButton
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.unifebe.projeto20.Model.Pet
 import android.widget.TextView
 import android.widget.ImageView
+import br.edu.unifebe.projeto20.view.FormularioAdocaoActivity
 import com.bumptech.glide.Glide
 
 class DetalhesPetActivity : AppCompatActivity() {
+
+    private lateinit var btnVoltar: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detalhe_pet)
 
         val pet = intent.getParcelableExtra<Pet>("pet")
+        btnVoltar = findViewById(R.id.btnVoltar)
 
         pet?.let {
             findViewById<TextView>(R.id.txtNome).text = it.nome
@@ -27,6 +34,20 @@ class DetalhesPetActivity : AppCompatActivity() {
 
             val imageView = findViewById<ImageView>(R.id.imgPet)
             Glide.with(this).load(it.imagemUrl).into(imageView)
+        }
+
+        val btnAdotar = findViewById<Button>(R.id.btnAdotar)
+
+        btnAdotar.setOnClickListener {
+            pet?.let {
+                val intent = Intent(this, FormularioAdocaoActivity::class.java)
+                intent.putExtra("animal_interesse", it.nome)
+                startActivity(intent)
+            }
+        }
+
+        btnVoltar.setOnClickListener {
+            finish()
         }
     }
 }
