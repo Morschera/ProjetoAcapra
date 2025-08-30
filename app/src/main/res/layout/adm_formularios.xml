@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="#2E2654"
+        android:background="#5b5786"
         android:padding="8dp"
         android:gravity="center_vertical">
 
@@ -35,7 +35,6 @@
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="2dp"
-            android:background="@android:drawable/btn_default"
             android:backgroundTint="#FFFFFF"
             android:text="@string/adicionar_pet"
             android:textAllCaps="false"
@@ -47,24 +46,12 @@
             android:layout_width="111dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="2dp"
-            android:background="@android:drawable/btn_default"
             android:backgroundTint="#FFFFFF"
             android:text="@string/registrar_admin"
             android:textAllCaps="false"
             android:textColor="#2E2654"
             tools:ignore="TextContrastCheck" />
 
-        <Button
-            android:id="@+id/btnForms"
-            android:layout_width="125dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:background="@android:drawable/btn_default"
-            android:backgroundTint="#FFFFFF"
-            android:text="@string/formul_rios"
-            android:textAllCaps="false"
-            android:textColor="#2E2654"
-            tools:ignore="TextSizeCheck,DuplicateSpeakableTextCheck,TextContrastCheck,VisualLintBounds" />
     </LinearLayout>
 
     <TextView

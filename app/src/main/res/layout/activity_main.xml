@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="#2E2654"
+        android:background="#5b5786"
         android:padding="8dp"
         android:gravity="center_vertical">
 
@@ -39,7 +39,7 @@
             android:backgroundTint="#F6F6F6"
             android:text="@string/adotar"
             android:textAllCaps="false"
-            android:textColor="#2E2654"
+            android:textColor="#5b5786"
             tools:ignore="TextContrastCheck" />
 
         <Button
@@ -49,7 +49,7 @@
             android:backgroundTint="#FFFFFF"
             android:text="@string/logar_adm"
             android:textAllCaps="false"
-            android:textColor="#2E2654"
+            android:textColor="#5b5786"
             tools:ignore="TextSizeCheck,DuplicateSpeakableTextCheck,TextContrastCheck,VisualLintBounds" />
     </LinearLayout>
 
@@ -94,7 +94,7 @@
                         android:layout_marginHorizontal="5dp"
                         android:background="@drawable/bg_button_disabled"
                         android:text="@string/todos"
-                        android:textColor="#78909C"
+                        android:textColor="@color/dark_gray"
                         android:textSize="20sp" />
 
                     <androidx.appcompat.widget.AppCompatButton
@@ -125,15 +125,6 @@
         </HorizontalScrollView>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/txtListTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Todos"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_margin="20dp"
-        tools:ignore="HardcodedText" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewProducts"

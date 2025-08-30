@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="#2E2654"
+        android:background="#5b5786"
         android:padding="8dp"
         android:gravity="center_vertical">
 
@@ -62,7 +62,12 @@
                 android:id="@+id/btnEscolherImagem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Escolher Imagem" />
+                android:layout_marginTop="16dp"
+                android:backgroundTint="#5b5786"
+                android:text="Escolher Imagem"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"/>
 
             <EditText
                 android:id="@+id/edtNome"
@@ -114,10 +119,15 @@
                 android:text="Castrado" />
 
             <Button
-                android:id="@+id/btnSalvar"
-                android:layout_width="match_parent"
+                android:id="@+id/btnEscolherImagem"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Salvar Pet" />
+                android:layout_marginTop="16dp"
+                android:backgroundTint="#5b5786"
+                android:text="Escolher Imagem"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"/>
 
         </LinearLayout>
     </ScrollView>
