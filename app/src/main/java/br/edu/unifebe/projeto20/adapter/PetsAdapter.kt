@@ -1,3 +1,5 @@
+package br.edu.unifebe.projeto20.adapter
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -6,7 +8,8 @@ import br.edu.unifebe.projeto20.databinding.PetsItemBinding
 import com.bumptech.glide.Glide
 
 class PetsAdapter(
-    private val petsList: MutableList<Pet>
+    private val pets: List<Pet>,
+    private val onItemClick: (Pet) -> Unit
 ) : RecyclerView.Adapter<PetsAdapter.PetsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PetsViewHolder {
@@ -14,28 +17,31 @@ class PetsAdapter(
         return PetsViewHolder(binding)
     }
 
-    override fun getItemCount() = petsList.size
+    override fun getItemCount() = pets.size
 
     override fun onBindViewHolder(holder: PetsViewHolder, position: Int) {
-        val item = petsList[position]
-
-        Glide.with(holder.imgPets.context)
-            .load(item.imagemUrl)
-            .into(holder.imgPets)
-
-        holder.nome.text = item.nome
-        holder.descricao.text = item.descricao
+        val item = pets[position]
+        holder.bind(item)
     }
 
-    fun updateData(newItems: List<Pet>) {
-        petsList.clear()
-        petsList.addAll(newItems)
-        notifyDataSetChanged()
-    }
+    inner class PetsViewHolder(private val binding: PetsItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-    inner class PetsViewHolder(binding: PetsItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        val imgPets = binding.imgPets
-        val nome = binding.txtNome
-        val descricao = binding.txtDescricao
+        fun bind(pet: Pet) {
+            binding.txtNome.text = pet.nome
+            binding.txtDescricao.text = pet.descricao
+
+            Glide.with(binding.root.context)
+                .load(pet.imagemUrl)
+                .into(binding.imgPets)
+
+            binding.root.setOnClickListener {
+                onItemClick(pet)
+            }
+
+            binding.btnInfo?.setOnClickListener {
+                onItemClick(pet)
+            }
+        }
     }
 }

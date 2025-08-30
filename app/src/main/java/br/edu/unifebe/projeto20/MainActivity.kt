@@ -1,6 +1,5 @@
 package br.edu.unifebe.projeto20
 
-import PetsAdapter
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
@@ -13,6 +12,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.toColorInt
 import androidx.recyclerview.widget.GridLayoutManager
 import br.edu.unifebe.projeto20.Model.Pet
+import br.edu.unifebe.projeto20.adapter.PetsAdapter
 import br.edu.unifebe.projeto20.databinding.ActivityMainBinding
 import br.edu.unifebe.projeto20.listitems.Pets
 import br.edu.unifebe.projeto20.view.FormularioAdocaoActivity
@@ -47,12 +47,15 @@ class MainActivity : AppCompatActivity() {
         window.statusBarColor = "#E0E0E0".toColorInt()
         colorDarkGray = ContextCompat.getColor(this, R.color.dark_gray)
 
-        // --- Recycler ---
         val recyclerViewPets = binding.recyclerViewProducts
         recyclerViewPets.layoutManager = GridLayoutManager(this, 2)
         recyclerViewPets.setHasFixedSize(true)
-        petsAdapter = PetsAdapter(petsList)
-        recyclerViewPets.adapter = petsAdapter
+        petsAdapter = PetsAdapter(petsList) { pet ->
+            val intent = Intent(this, DetalhesPetActivity::class.java)
+            intent.putExtra("pet", pet)
+            startActivity(intent)
+        }
+        binding.recyclerViewProducts.adapter = petsAdapter
 
         CoroutineScope(Dispatchers.IO).launch {
             pets.getPets().collectIndexed { _, value ->

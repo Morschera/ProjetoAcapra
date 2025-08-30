@@ -18,9 +18,9 @@ class DetalhesPetActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detalhe_pet)
+        btnVoltar = findViewById(R.id.btnVoltar)
 
         val pet = intent.getParcelableExtra<Pet>("pet")
-        btnVoltar = findViewById(R.id.btnVoltar)
 
         pet?.let {
             findViewById<TextView>(R.id.txtNome).text = it.nome
@@ -35,6 +35,7 @@ class DetalhesPetActivity : AppCompatActivity() {
             val imageView = findViewById<ImageView>(R.id.imgPet)
             Glide.with(this).load(it.imagemUrl).into(imageView)
         }
+
 
         val btnAdotar = findViewById<Button>(R.id.btnAdotar)
 
