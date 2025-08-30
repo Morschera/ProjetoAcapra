@@ -1,14 +1,11 @@
-package br.edu.unifebe.projeto20.adapter
-
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import br.edu.unifebe.projeto20.MainActivity
 import br.edu.unifebe.projeto20.Model.Pet
 import br.edu.unifebe.projeto20.databinding.PetsItemBinding
+import com.bumptech.glide.Glide
 
 class PetsAdapter(
-    petsList1: MainActivity,
     private val petsList: MutableList<Pet>
 ) : RecyclerView.Adapter<PetsAdapter.PetsViewHolder>() {
 
@@ -21,7 +18,12 @@ class PetsAdapter(
 
     override fun onBindViewHolder(holder: PetsViewHolder, position: Int) {
         val item = petsList[position]
-        holder.imgPets.setBackgroundResource(item.imgPets) // se img é drawable id
+
+        // carrega imagem do Firebase/URL
+        Glide.with(holder.imgPets.context)
+            .load(item.imagemUrl)
+            .into(holder.imgPets)
+
         holder.nome.text = item.nome
         holder.descricao.text = item.descricao
     }
