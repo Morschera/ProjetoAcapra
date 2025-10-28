@@ -87,7 +87,6 @@
                 android:elevation="1dp"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="@string/jo_o_carvalho"
                 android:textColor="#000000"
                 android:textStyle="bold" />
 
