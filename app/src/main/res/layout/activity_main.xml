@@ -53,10 +53,11 @@
             tools:ignore="TextSizeCheck,DuplicateSpeakableTextCheck,TextContrastCheck,VisualLintBounds" />
     </LinearLayout>
 
-    <SearchView
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:queryHint="Search"
+        android:queryHint="Pesquisar..."
         android:background="@color/white"
         android:layout_margin="20dp" />
 

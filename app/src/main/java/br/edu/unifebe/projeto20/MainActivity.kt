@@ -30,13 +30,14 @@ class MainActivity : AppCompatActivity() {
     private val pets = Pets()
 
     private val petsList: MutableList<Pet> = mutableListOf()
-
     private val fullList: MutableList<Pet> = mutableListOf()
 
-    private var clicked = false
     private var colorDarkGray: Int = 0
 
     private enum class FilterType { TODOS, CACHORRO, GATO }
+
+    private var currentFilterType: FilterType = FilterType.TODOS
+    private var currentSearchQuery: String = ""
 
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,34 +69,48 @@ class MainActivity : AppCompatActivity() {
                 petsList.addAll(value)
 
                 launch(Dispatchers.Main) {
-                    petsAdapter.notifyDataSetChanged()
+                    currentFilterType = FilterType.TODOS
+                    applyFilters()
                     setSelectedButtons(binding.btTodos)
                 }
             }
         }
 
-        binding.btTodos.setOnClickListener {
-            clicked = true
-            if (clicked) {
-                applyFilter(FilterType.TODOS)
-                setSelectedButtons(binding.btTodos)
+        binding.searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                binding.searchView.clearFocus()
+                return true
             }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                currentSearchQuery = newText.orEmpty()
+                applyFilters()
+                return true
+            }
+        })
+
+        binding.searchView.setOnClickListener {
+            binding.searchView.isIconified = false
+            binding.searchView.requestFocus()
+        }
+
+
+        binding.btTodos.setOnClickListener {
+            currentFilterType = FilterType.TODOS
+            applyFilters()
+            setSelectedButtons(binding.btTodos)
         }
 
         binding.btCachorro.setOnClickListener {
-            clicked = true
-            if (clicked) {
-                applyFilter(FilterType.CACHORRO)
-                setSelectedButtons(binding.btCachorro)
-            }
+            currentFilterType = FilterType.CACHORRO
+            applyFilters()
+            setSelectedButtons(binding.btCachorro)
         }
 
         binding.btGato.setOnClickListener {
-            clicked = true
-            if (clicked) {
-                applyFilter(FilterType.GATO)
-                setSelectedButtons(binding.btGato)
-            }
+            currentFilterType = FilterType.GATO
+            applyFilters()
+            setSelectedButtons(binding.btGato)
         }
 
         val btnIrLogin = findViewById<Button>(R.id.btnIrLogin)
@@ -112,8 +127,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun applyFilter(type: FilterType) {
-        val filtered: List<Pet> = when (type) {
+
+    private fun applyFilters() {
+        val filteredByType: List<Pet> = when (currentFilterType) {
             FilterType.TODOS -> fullList
             FilterType.CACHORRO -> fullList.filter {
                 it.tipo.equals("Cachorro", ignoreCase = true)
@@ -123,8 +139,17 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        val finalFilteredList: List<Pet>
+        if (currentSearchQuery.isEmpty()) {
+            finalFilteredList = filteredByType
+        } else {
+            finalFilteredList = filteredByType.filter {
+                it.nome.contains(currentSearchQuery, ignoreCase = true)
+            }
+        }
+
         petsList.clear()
-        petsList.addAll(filtered)
+        petsList.addAll(finalFilteredList)
         petsAdapter.notifyDataSetChanged()
         binding.recyclerViewProducts.visibility = View.VISIBLE
     }
