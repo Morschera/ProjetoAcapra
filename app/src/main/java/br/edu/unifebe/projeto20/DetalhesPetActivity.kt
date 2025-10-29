@@ -36,6 +36,12 @@ class DetalhesPetActivity : AppCompatActivity() {
             Glide.with(this).load(it.imagemUrl).into(imageView)
         }
 
+        val logo = findViewById<ImageView>(R.id.Logo)
+
+        logo.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
         val btnAdotar = findViewById<Button>(R.id.btnAdotar)
 

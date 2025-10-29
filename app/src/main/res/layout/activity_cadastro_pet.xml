@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="#5b5786"
+        android:background="#FFFFFF"
         android:padding="8dp"
         android:gravity="center_vertical">
 
@@ -34,7 +34,7 @@
             android:background="@android:color/transparent"
             android:contentDescription="@string/voltar"
             android:src="@drawable/ic_arrow_back"
-            android:tint="#FFFFFF"
+            android:tint="#5b5786"
             tools:ignore="UseAppTint" />
     </LinearLayout>
 

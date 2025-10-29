@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.edu.unifebe.projeto20.Model.Formulario
@@ -22,6 +23,12 @@ class AdmFormularioActivity : AppCompatActivity() {
         val btnPet = findViewById<Button>(R.id.btnPet)
         val btnRegistrarAdmin = findViewById<Button>(R.id.btnRegistraAdm)
         val intentPet = Intent(this, CadastroPetActivity::class.java)
+        val logo = findViewById<ImageView>(R.id.Logo)
+
+        logo.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
         btnPet.setOnClickListener {
             startActivity(intentPet)

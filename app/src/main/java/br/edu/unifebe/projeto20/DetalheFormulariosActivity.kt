@@ -33,6 +33,13 @@ class DetalheFormularioActivity : AppCompatActivity() {
             return
         }
 
+        val logo = findViewById<ImageView>(R.id.Logo)
+
+        logo.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
         btnVoltar = findViewById(R.id.btnVoltar)
 
 

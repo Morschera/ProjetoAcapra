@@ -52,6 +52,13 @@ class CadastroPetActivity : AppCompatActivity() {
         btnEscolherImagem = findViewById(R.id.btnEscolherImagem)
         btnVoltar = findViewById(R.id.btnVoltar)
 
+        val logo = findViewById<ImageView>(R.id.Logo)
+
+        logo.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
         btnVoltar.setOnClickListener {
             finish()
         }

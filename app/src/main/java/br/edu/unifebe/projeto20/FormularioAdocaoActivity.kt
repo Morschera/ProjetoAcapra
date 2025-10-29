@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import br.edu.unifebe.projeto20.MainActivity
 import br.edu.unifebe.projeto20.Model.FormularioAdocao
 import br.edu.unifebe.projeto20.R
 import br.edu.unifebe.projeto20.repository.AdocaoRepository
@@ -81,6 +82,13 @@ class FormularioAdocaoActivity : AppCompatActivity() {
         val enviarButton: Button = findViewById(R.id.btnEnviarFormulario)
         val btnVoltar = findViewById<ImageButton>(R.id.btnVoltar)
         val btnSelecionarImagem = findViewById<Button>(R.id.btnSelecionarImagem)
+
+        val logo = findViewById<ImageView>(R.id.Logo)
+
+        logo.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
         btnSelecionarImagem.setOnClickListener {
             val intent = Intent(Intent.ACTION_GET_CONTENT).apply {

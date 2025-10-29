@@ -39,9 +39,7 @@ class PetsAdapter(
                 onItemClick(pet)
             }
 
-            binding.btnInfo?.setOnClickListener {
-                onItemClick(pet)
-            }
+
         }
     }
 }
