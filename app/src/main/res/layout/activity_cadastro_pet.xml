@@ -72,6 +72,13 @@
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"/>
 
+            <Spinner
+                android:id="@+id/spinnerPets"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:backgroundTint="#5b5786" />
+
             <EditText
                 android:id="@+id/edtNome"
                 android:layout_width="match_parent"
@@ -135,6 +142,17 @@
         android:textColor="#FFFFFF"
         android:layout_gravity="center"
         android:textSize="16sp"/>
+
+    <Button
+        android:id="@+id/btnDeletar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="#E53935"
+        android:text="Deletar Pet"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="8dp" />
 
 
 </LinearLayout>
