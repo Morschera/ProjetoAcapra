@@ -8,6 +8,9 @@ import android.view.View
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import okhttp3.*
+import org.json.JSONObject
+import java.io.IOException
 import br.edu.unifebe.projeto20.MainActivity
 import br.edu.unifebe.projeto20.Model.FormularioAdocao
 import br.edu.unifebe.projeto20.R
@@ -22,6 +25,11 @@ class FormularioAdocaoActivity : AppCompatActivity() {
     private val listaImagensSelecionadas = mutableListOf<Uri>()
     private val imagensUrls = mutableListOf<String>()
     private lateinit var progressBar: ProgressBar
+
+    private lateinit var btnEnviar: Button
+    private lateinit var btnSelecionarImagem: Button
+    private lateinit var btnVoltar: ImageButton
+    private lateinit var gruposRadio: List<RadioGroup>
 
     private val selecionarImagensLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -52,17 +60,9 @@ class FormularioAdocaoActivity : AppCompatActivity() {
         progressBar = findViewById(R.id.progressBar)
         adocaoRepository = AdocaoRepository()
 
-
-
-
-
         val nomeEditText: EditText = findViewById(R.id.edtNomeCompleto)
         val telefoneEditText: EditText = findViewById(R.id.edtTelefone)
         val animalEditText: EditText = findViewById(R.id.edtAnimalInteresse)
-        val animalInteresse = intent.getStringExtra("animal_interesse")
-        if (!animalInteresse.isNullOrEmpty()) {
-            animalEditText.setText(animalInteresse)
-        }
         val idadeEditText: EditText = findViewById(R.id.edtIdade)
         val rgConcordaResidencia: RadioGroup = findViewById(R.id.rgConcordaResidencia)
         val outrosAnimaisEditText: EditText = findViewById(R.id.edtOutrosAnimais)
@@ -79,15 +79,24 @@ class FormularioAdocaoActivity : AppCompatActivity() {
         val rgVacinacao: RadioGroup = findViewById(R.id.rgVacinacao)
         val rgTaxaDoacao: RadioGroup = findViewById(R.id.rgTaxaDoacao)
 
-        val enviarButton: Button = findViewById(R.id.btnEnviarFormulario)
-        val btnVoltar = findViewById<ImageButton>(R.id.btnVoltar)
-        val btnSelecionarImagem = findViewById<Button>(R.id.btnSelecionarImagem)
+        gruposRadio = listOf(
+            rgConcordaResidencia, rgCastradosVacinados,
+            rgLocalSeguro, rgVacinacao, rgTaxaDoacao
+        )
+
+        btnEnviar = findViewById(R.id.btnEnviarFormulario)
+        btnVoltar = findViewById(R.id.btnVoltar)
+        btnSelecionarImagem = findViewById(R.id.btnSelecionarImagem)
 
         val logo = findViewById<ImageView>(R.id.Logo)
-
         logo.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+        }
+
+        val animalInteresse = intent.getStringExtra("animal_interesse")
+        if (!animalInteresse.isNullOrEmpty()) {
+            animalEditText.setText(animalInteresse)
         }
 
         btnSelecionarImagem.setOnClickListener {
@@ -98,7 +107,7 @@ class FormularioAdocaoActivity : AppCompatActivity() {
             selecionarImagensLauncher.launch(intent)
         }
 
-        enviarButton.setOnClickListener {
+        btnEnviar.setOnClickListener {
             if (!validarCamposObrigatorios(
                     nomeEditText, telefoneEditText, animalEditText, idadeEditText,
                     rgConcordaResidencia, outrosAnimaisEditText, rgCastradosVacinados,
@@ -108,6 +117,7 @@ class FormularioAdocaoActivity : AppCompatActivity() {
                 )
             ) return@setOnClickListener
 
+            bloquearTudo(true)
             progressBar.visibility = View.VISIBLE
 
             if (listaImagensSelecionadas.isNotEmpty()) {
@@ -136,6 +146,7 @@ class FormularioAdocaoActivity : AppCompatActivity() {
                 }
             } else {
                 Toast.makeText(this, "Selecione ao menos uma imagem!", Toast.LENGTH_SHORT).show()
+                bloquearTudo(false)
                 progressBar.visibility = View.GONE
             }
         }
@@ -143,9 +154,18 @@ class FormularioAdocaoActivity : AppCompatActivity() {
         btnVoltar.setOnClickListener { finish() }
     }
 
-    private fun validarCamposObrigatorios(
-        vararg campos: Any
-    ): Boolean {
+    private fun bloquearTudo(bloquear: Boolean) {
+        btnEnviar.isEnabled = !bloquear
+        btnSelecionarImagem.isEnabled = !bloquear
+        btnVoltar.isEnabled = !bloquear
+        gruposRadio.forEach { group ->
+            for (i in 0 until group.childCount) {
+                group.getChildAt(i).isEnabled = !bloquear
+            }
+        }
+    }
+
+    private fun validarCamposObrigatorios(vararg campos: Any): Boolean {
         for (campo in campos) {
             when (campo) {
                 is EditText -> {
@@ -155,9 +175,11 @@ class FormularioAdocaoActivity : AppCompatActivity() {
                         return false
                     }
                 }
+
                 is RadioGroup -> {
                     if (campo.checkedRadioButtonId == -1) {
-                        Toast.makeText(this, "Selecione uma opção obrigatória", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Selecione uma opção obrigatória", Toast.LENGTH_SHORT)
+                            .show()
                         return false
                     }
                 }
@@ -208,8 +230,10 @@ class FormularioAdocaoActivity : AppCompatActivity() {
             taxaDoacao = concordaTaxa,
             imagens = imagens
         )
+
         adocaoRepository.salvarFormulario(this, formulario) {
             runOnUiThread {
+                bloquearTudo(false)
                 progressBar.visibility = View.GONE
                 Toast.makeText(this, "Formulário enviado com sucesso!", Toast.LENGTH_SHORT).show()
                 finish()
@@ -254,8 +278,58 @@ class FormularioAdocaoActivity : AppCompatActivity() {
         return if (checkedId != -1) {
             val radioButton: RadioButton = findViewById(checkedId)
             radioButton.text.toString()
-        } else {
-            ""
-        }
+        } else ""
+    }
+
+    private fun buscarCep(
+        cep: String,
+        cidadeEditText: EditText,
+        ufEditText: EditText,
+        ruaNumeroEditText: EditText,
+        bairroEditText: EditText
+    ) {
+        val client = OkHttpClient()
+        val request = Request.Builder()
+            .url("https://viacep.com.br/ws/$cep/json/")
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                runOnUiThread {
+                    Toast.makeText(
+                        this@FormularioAdocaoActivity,
+                        "Erro ao buscar CEP",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                response.body?.string()?.let { body ->
+                    val json = JSONObject(body)
+                    if (json.has("erro")) {
+                        runOnUiThread {
+                            Toast.makeText(
+                                this@FormularioAdocaoActivity,
+                                "CEP não encontrado",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    } else {
+                        val cidade = json.optString("localidade")
+                        val uf = json.optString("uf")
+                        val rua = json.optString("logradouro")
+                        val bairro = json.optString("bairro")
+
+                        runOnUiThread {
+                            cidadeEditText.setText(cidade)
+                            ufEditText.setText(uf)
+                            ruaNumeroEditText.setText(rua)
+                            bairroEditText.setText(bairro)
+                        }
+                    }
+                }
+            }
+        })
     }
 }
