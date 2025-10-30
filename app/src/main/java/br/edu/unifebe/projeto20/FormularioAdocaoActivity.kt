@@ -261,35 +261,34 @@ class FormularioAdocaoActivity : AppCompatActivity() {
     }
 
     private fun uploadImagens(onComplete: (List<String>) -> Unit) {
-        imagensUrls.clear()
-        val total = listaImagensSelecionadas.size
-        var uploaded = 0
-
-        for (uri in listaImagensSelecionadas) {
-            val ref = storage.reference.child("formularios/${UUID.randomUUID()}.jpg")
-
-            ref.putFile(uri)
-                .addOnSuccessListener {
-                    ref.downloadUrl.addOnSuccessListener { downloadUri ->
-                        imagensUrls.add(downloadUri.toString())
-                        uploaded++
-                        if (uploaded == total) {
-                            onComplete(imagensUrls.toList())
-                        }
-                    }
-                }
-                .addOnFailureListener { e ->
-                    uploaded++
-                    Toast.makeText(
-                        this,
-                        "Falha ao enviar uma imagem: ${e.message}",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    if (uploaded == total) {
-                        onComplete(imagensUrls.toList())
-                    }
-                }
+        if (listaImagensSelecionadas.isEmpty()) {
+            onComplete(emptyList())
+            return
         }
+
+        val uploadTasks = listaImagensSelecionadas.map { uri ->
+            val ref = storage.reference.child("formularios/${UUID.randomUUID()}.jpg")
+            ref.putFile(uri).continueWithTask { task ->
+                if (!task.isSuccessful) {
+                    task.exception?.let { throw it }
+                }
+                ref.downloadUrl
+            }
+        }
+
+        com.google.android.gms.tasks.Tasks.whenAllSuccess<Uri>(uploadTasks)
+            .addOnSuccessListener { uris ->
+                val urls = uris.map { it.toString() }
+                onComplete(urls)
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(
+                    this,
+                    "Falha ao enviar imagens: ${e.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
+                onComplete(emptyList())
+            }
     }
 
     private fun getRadioGroupValue(radioGroup: RadioGroup): String {
