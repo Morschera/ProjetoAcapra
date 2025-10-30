@@ -30,6 +30,7 @@ class FormularioAdocaoActivity : AppCompatActivity() {
     private lateinit var btnSelecionarImagem: Button
     private lateinit var btnVoltar: ImageButton
     private lateinit var gruposRadio: List<RadioGroup>
+    private lateinit var camposTexto: List<EditText>
 
     private val selecionarImagensLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -79,9 +80,24 @@ class FormularioAdocaoActivity : AppCompatActivity() {
         val rgVacinacao: RadioGroup = findViewById(R.id.rgVacinacao)
         val rgTaxaDoacao: RadioGroup = findViewById(R.id.rgTaxaDoacao)
 
+        cepEditText.setOnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) {
+                val cep = cepEditText.text.toString().trim()
+                if (cep.isNotEmpty()) {
+                    buscarCep(cep, cidadeEditText, ufEditText, ruaNumeroEditText, bairroEditText)
+                }
+            }
+        }
+
         gruposRadio = listOf(
             rgConcordaResidencia, rgCastradosVacinados,
             rgLocalSeguro, rgVacinacao, rgTaxaDoacao
+        )
+
+        camposTexto = listOf(
+            nomeEditText, telefoneEditText, animalEditText, idadeEditText,
+            outrosAnimaisEditText, casaPropriaEditText, cepEditText, cidadeEditText,
+            ufEditText, ruaNumeroEditText, bairroEditText, rendaEditText, condicoesEditText
         )
 
         btnEnviar = findViewById(R.id.btnEnviarFormulario)
@@ -158,6 +174,9 @@ class FormularioAdocaoActivity : AppCompatActivity() {
         btnEnviar.isEnabled = !bloquear
         btnSelecionarImagem.isEnabled = !bloquear
         btnVoltar.isEnabled = !bloquear
+
+        camposTexto.forEach { it.isEnabled = !bloquear }
+
         gruposRadio.forEach { group ->
             for (i in 0 until group.childCount) {
                 group.getChildAt(i).isEnabled = !bloquear
