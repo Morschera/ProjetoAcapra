@@ -307,6 +307,14 @@ class FormularioAdocaoActivity : AppCompatActivity() {
         ruaNumeroEditText: EditText,
         bairroEditText: EditText
     ) {
+        val cepTratado = cep.replace("[^0-9]".toRegex(), "")
+        if (cepTratado.length != 8) {
+            runOnUiThread {
+                Toast.makeText(this@FormularioAdocaoActivity, "CEP inválido", Toast.LENGTH_SHORT).show()
+            }
+            return
+        }
+
         val client = OkHttpClient()
         val request = Request.Builder()
             .url("https://viacep.com.br/ws/$cep/json/")
@@ -324,15 +332,19 @@ class FormularioAdocaoActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call, response: Response) {
-                response.body?.string()?.let { body ->
-                    val json = JSONObject(body)
+                val bodyString = response.body?.string()
+                if (bodyString.isNullOrEmpty() || !bodyString.trim().startsWith("{")) {
+                    runOnUiThread {
+                        Toast.makeText(this@FormularioAdocaoActivity, "CEP inválido ou serviço indisponível", Toast.LENGTH_SHORT).show()
+                    }
+                    return
+                }
+
+                try {
+                    val json = JSONObject(bodyString)
                     if (json.has("erro")) {
                         runOnUiThread {
-                            Toast.makeText(
-                                this@FormularioAdocaoActivity,
-                                "CEP não encontrado",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            Toast.makeText(this@FormularioAdocaoActivity, "CEP não encontrado", Toast.LENGTH_SHORT).show()
                         }
                     } else {
                         val cidade = json.optString("localidade")
@@ -347,8 +359,13 @@ class FormularioAdocaoActivity : AppCompatActivity() {
                             bairroEditText.setText(bairro)
                         }
                     }
+                } catch (e: Exception) {
+                    runOnUiThread {
+                        Toast.makeText(this@FormularioAdocaoActivity, "Erro ao processar CEP", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
+
         })
     }
 }
