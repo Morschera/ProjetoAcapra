@@ -61,7 +61,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/insira_seu_nome_completo"
+                    android:text="@string/insira_o_nome_completo"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp" />
 

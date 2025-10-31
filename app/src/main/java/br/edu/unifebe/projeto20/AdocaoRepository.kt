@@ -16,7 +16,6 @@ class AdocaoRepository {
             .add(formulario)
             .addOnSuccessListener { documentReference ->
                 Log.d("Firestore", "Formulário adicionado com ID: ${documentReference.id}")
-                Toast.makeText(context, "Formulário enviado com sucesso!", Toast.LENGTH_SHORT).show()
                 onComplete()
             }
             .addOnFailureListener { e ->

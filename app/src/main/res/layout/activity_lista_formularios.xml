@@ -36,138 +36,133 @@
             app:tint="#5b5786" />
     </LinearLayout>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp">
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:divider="?android:attr/dividerHorizontal"
-        android:showDividers="middle">
+        android:layout_height="match_parent"
+        android:padding="16dp">
 
-        <TextView
-            android:id="@+id/tvNomeCompleto"
+        <LinearLayout
+            android:id="@+id/containerConteudo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nome: "
-            android:textStyle="bold"
-            android:textSize="18sp"/>
+            android:orientation="vertical"
+            android:divider="?android:attr/dividerHorizontal"
+            android:showDividers="middle">
 
-        <TextView
-            android:id="@+id/tvTelefone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Telefone:" />
+            <TextView
+                android:id="@+id/tvNomeCompleto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nome:"
+                android:textStyle="bold"
+                android:textSize="18sp"/>
 
-        <TextView
-            android:id="@+id/tvAnimalInteresse"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Animal de interesse:" />
+            <TextView
+                android:id="@+id/tvTelefone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Telefone:" />
 
-        <TextView
-            android:id="@+id/tvIdade"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Idade:" />
+            <TextView
+                android:id="@+id/tvAnimalInteresse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Animal de interesse:" />
 
-        <TextView
-            android:id="@+id/tvConcordaResidencia"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Concorda Residência" />
+            <TextView
+                android:id="@+id/tvIdade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Idade:" />
 
-        <TextView
-            android:id="@+id/tvOutrosAnimais"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Outros animais:" />
+            <TextView
+                android:id="@+id/tvConcordaResidencia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Concorda Residência:" />
 
-        <TextView
-            android:id="@+id/tvCondicoes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Condições:" />
+            <TextView
+                android:id="@+id/tvOutrosAnimais"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Outros animais:" />
 
-        <TextView
-            android:id="@+id/tvMoradia"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Moradia:" />
+            <TextView
+                android:id="@+id/tvCondicoes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Condições:" />
 
-        <TextView
-            android:id="@+id/tvLocalSeguro"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Local Seguro:" />
+            <TextView
+                android:id="@+id/tvMoradia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Moradia:" />
 
-        <TextView
-            android:id="@+id/tvEndereco"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Endereço:" />
+            <TextView
+                android:id="@+id/tvLocalSeguro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Local Seguro:" />
 
-        <TextView
-            android:id="@+id/tvCidadeUf"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cidade / UF:" />
+            <TextView
+                android:id="@+id/tvEndereco"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Endereço:" />
 
-        <TextView
-            android:id="@+id/tvBairro"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Bairro:" />
+            <TextView
+                android:id="@+id/tvCidadeUf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cidade / UF:" />
 
-        <TextView
-            android:id="@+id/tvRenda"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Renda:" />
+            <TextView
+                android:id="@+id/tvBairro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bairro:" />
 
-        <TextView
-            android:id="@+id/tvCastradosVacinados"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Castrados/Vacinados:" />
+            <TextView
+                android:id="@+id/tvRenda"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Renda:" />
 
-        <TextView
-            android:id="@+id/tvVacinacao"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Concorda com Vacinação:" />
+            <TextView
+                android:id="@+id/tvCastradosVacinados"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Castrados/Vacinados:" />
 
-        <TextView
-            android:id="@+id/tvTaxaDoacao"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Aceita taxa de doação:" />
+            <TextView
+                android:id="@+id/tvVacinacao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Concorda com Vacinação:" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Imagens:"
-            android:textStyle="bold"
-            android:paddingTop="12dp"/>
+            <TextView
+                android:id="@+id/tvTaxaDoacao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Aceita taxa de doação:" />
 
-        <ImageView
-            android:id="@+id/img1"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"
-            android:contentDescription="Imagem 1"/>
+            <TextView
+                android:id="@+id/tvTituloImagens"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Imagens:"
+                android:textStyle="bold"
+                android:paddingTop="12dp"/>
 
-        <ImageView
-            android:id="@+id/img2"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"
-            android:contentDescription="Imagem 2"/>
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/containerImagens"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:divider="?android:attr/dividerHorizontal"
+                android:showDividers="middle"
+                android:paddingTop="8dp"/>
+        </LinearLayout>
     </ScrollView>
 </LinearLayout>

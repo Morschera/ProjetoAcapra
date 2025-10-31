@@ -3,11 +3,7 @@ package br.edu.unifebe.projeto20
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
@@ -16,6 +12,7 @@ class DetalheFormularioActivity : AppCompatActivity() {
 
     private val db = FirebaseFirestore.getInstance()
     private lateinit var btnVoltar: ImageButton
+    private lateinit var containerImagens: LinearLayout
 
     companion object {
         const val EXTRA_FORM_ID = "formId"
@@ -33,19 +30,14 @@ class DetalheFormularioActivity : AppCompatActivity() {
             return
         }
 
-        val logo = findViewById<ImageView>(R.id.Logo)
+        containerImagens = findViewById(R.id.containerImagens)
 
-        logo.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+        findViewById<ImageView>(R.id.Logo).setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
         }
 
         btnVoltar = findViewById(R.id.btnVoltar)
-
-
-        btnVoltar.setOnClickListener {
-            finish()
-        }
+        btnVoltar.setOnClickListener { finish() }
 
         carregarFormulario(formId)
     }
@@ -81,7 +73,6 @@ class DetalheFormularioActivity : AppCompatActivity() {
                     val renda = document.getLong("rendaMensal") ?: 0
                     findViewById<TextView>(R.id.tvRenda).text = "Renda: $renda"
 
-                    // Booleans → Sim/Não
                     val localSeguro = document.getBoolean("localSeguro") ?: false
                     findViewById<TextView>(R.id.tvLocalSeguro).text =
                         "Local Seguro: ${if (localSeguro) "Sim" else "Não"}"
@@ -103,9 +94,21 @@ class DetalheFormularioActivity : AppCompatActivity() {
                         "Aceita Taxa Doação: ${if (taxaDoacao) "Sim" else "Não"}"
 
                     val imagens = document.get("imagens") as? List<String> ?: emptyList()
-                    if (imagens.isNotEmpty()) {
-                        Glide.with(this).load(imagens.getOrNull(0)).into(findViewById<ImageView>(R.id.img1))
-                        Glide.with(this).load(imagens.getOrNull(1)).into(findViewById<ImageView>(R.id.img2))
+                    containerImagens.removeAllViews()
+
+                    for (url in imagens) {
+                        val imageView = ImageView(this).apply {
+                            layoutParams = LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.MATCH_PARENT,
+                                400
+                            ).apply {
+                                setMargins(0, 16, 0, 16)
+                            }
+                            scaleType = ImageView.ScaleType.CENTER_CROP
+                            adjustViewBounds = true
+                        }
+                        Glide.with(this).load(url).into(imageView)
+                        containerImagens.addView(imageView)
                     }
 
                 } else {
@@ -117,5 +120,4 @@ class DetalheFormularioActivity : AppCompatActivity() {
                 Toast.makeText(this, "Erro ao carregar formulário", Toast.LENGTH_SHORT).show()
             }
     }
-
 }
